@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Catálogo | Savia Col.</title>
+    <title>Catalogo | Savia Col.</title>
     <meta
       name="description"
-      content="Catálogo Savia Col. con granolas, pancakes, spreads, pantry staples y bundles. Incluye búsqueda, filtros y fichas más comerciales."
+      content="Explora el catalogo de Savia Col. con granolas, mezclas, cremas y basicos para la despensa. Filtra por categoria, sabor o momento de uso."
     />
     <meta name="robots" content="index,follow" />
     <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
@@ -17,10 +17,10 @@
     data-page="catalogo"
     data-root=".."
     data-language="es"
-    data-title-es="Catálogo | Savia Col."
+    data-title-es="Catalogo | Savia Col."
     data-title-en="Catalog | Savia Col."
-    data-desc-es="Catálogo Savia Col. con granolas, pancakes, spreads, pantry staples y bundles. Incluye búsqueda, filtros y fichas más comerciales."
-    data-desc-en="Savia Col. catalog with granolas, pancakes, spreads, pantry staples and bundles. Includes search, filters and more commercial product sheets."
+    data-desc-es="Explora el catalogo de Savia Col. con granolas, mezclas, cremas y basicos para la despensa. Filtra por categoria, sabor o momento de uso."
+    data-desc-en="Browse the Savia Col. catalog with granolas, mixes, spreads and pantry staples. Filter by category, flavor or moment of use."
   >
     <div id="site-header"></div>
 
@@ -28,23 +28,21 @@
       <section class="container catalog-hero surface-panel">
         <div>
           <p class="kicker">
-            <span class="lang-es">Catálogo completo</span>
+            <span class="lang-es">Catalogo completo</span>
             <span class="lang-en">Full catalog</span>
           </p>
           <h1 class="page-title">
-            <span class="lang-es">Explora por familia, sabor o momento de consumo.</span>
-            <span class="lang-en">Browse by family, flavor or consumption moment.</span>
+            <span class="lang-es">Encuentra granolas, mezclas, cremas y basicos para tu rutina.</span>
+            <span class="lang-en">Find granolas, mixes, spreads and pantry staples for your routine.</span>
           </h1>
         </div>
 
         <p class="page-intro">
           <span class="lang-es">
-            El catálogo ahora tiene mejor jerarquía visual: cada tarjeta comunica categoría, sabor, precio y acción principal
-            sin que el usuario tenga que “descifrar” la interfaz. También mejora mucho en mobile con filtros deslizables.
+            Usa los filtros para explorar por categoria o escribe un ingrediente, un sabor o un momento del dia para llegar mas rapido a lo que quieres.
           </span>
           <span class="lang-en">
-            The catalog now has stronger visual hierarchy: each card communicates category, flavor, price and primary action
-            without forcing the user to decode the interface. It also performs much better on mobile with scrollable filters.
+            Use the filters to browse by category or type an ingredient, flavor or moment of the day to find what you want faster.
           </span>
         </p>
 
@@ -56,8 +54,8 @@
           <input
             type="search"
             data-search-input
-            data-placeholder-es="Busca por sabor, categoría o ocasión"
-            data-placeholder-en="Search by flavor, category or occasion"
+            data-placeholder-es="Busca por sabor, categoria o uso"
+            data-placeholder-en="Search by flavor, category or use"
           />
         </label>
 
@@ -67,7 +65,7 @@
             <span class="lang-en">All</span>
           </button>
           <button class="filter-chip" type="button" data-filter-trigger="granolas">
-            <span class="lang-es">GranOLAS</span>
+            <span class="lang-es">Granolas</span>
             <span class="lang-en">Granolas</span>
           </button>
           <button class="filter-chip" type="button" data-filter-trigger="pancakes">
@@ -75,12 +73,12 @@
             <span class="lang-en">Pancakes &amp; Waffles</span>
           </button>
           <button class="filter-chip" type="button" data-filter-trigger="spreads">
-            <span class="lang-es">Esparcibles</span>
+            <span class="lang-es">Cremas</span>
             <span class="lang-en">Spreads</span>
           </button>
           <button class="filter-chip" type="button" data-filter-trigger="pantry">
-            <span class="lang-es">Avena &amp; Harinas</span>
-            <span class="lang-en">Oats &amp; Flours</span>
+            <span class="lang-es">Despensa</span>
+            <span class="lang-en">Pantry</span>
           </button>
           <button class="filter-chip" type="button" data-filter-trigger="bundles">
             <span class="lang-es">Combos</span>
@@ -90,20 +88,20 @@
 
         <div class="results-bar">
           <p id="catalog-count">
-            <span class="lang-es">0 productos listos para explorar</span>
-            <span class="lang-en">0 products ready to browse</span>
+            <span class="lang-es">0 productos encontrados</span>
+            <span class="lang-en">0 products found</span>
           </p>
           <p class="muted">
-            <span class="lang-es">El filtro trabaja en tiempo real y conserva una experiencia limpia en pantallas pequeñas.</span>
-            <span class="lang-en">Filtering works in real time and keeps a clean experience on small screens.</span>
+            <span class="lang-es">Filtra en tiempo real y ajusta tu carrito mientras recorres el catalogo.</span>
+            <span class="lang-en">Filter in real time and adjust your cart while browsing the catalog.</span>
           </p>
         </div>
       </section>
 
       <section class="container section">
         <div id="catalog-empty" class="empty-state">
-          <span class="lang-es">No hay resultados con esa combinación. Prueba otra categoría o un término más corto.</span>
-          <span class="lang-en">There are no results for that combination. Try another category or a shorter term.</span>
+          <span class="lang-es">No encontramos resultados con esa combinacion. Prueba otra categoria o cambia el termino de busqueda.</span>
+          <span class="lang-en">We could not find results for that combination. Try another category or adjust your search.</span>
         </div>
         <div id="catalog-grid" class="product-grid"></div>
       </section>
@@ -112,25 +110,25 @@
         <div class="info-grid">
           <article class="card">
             <p class="kicker">
-              <span class="lang-es">Cómo leer este catálogo</span>
-              <span class="lang-en">How to read this catalog</span>
+              <span class="lang-es">Como elegir</span>
+              <span class="lang-en">How to choose</span>
             </p>
             <h2>
-              <span class="lang-es">Primero descubre, luego compara.</span>
-              <span class="lang-en">Discover first, compare second.</span>
+              <span class="lang-es">Mira el formato, el perfil de sabor y el uso sugerido.</span>
+              <span class="lang-en">Check the format, flavor profile and suggested use.</span>
             </h2>
             <ul class="list">
               <li>
-                <span class="lang-es">Los tags resumen gramaje, uso y tipo de producto sin abrir la ficha.</span>
-                <span class="lang-en">Tags summarize size, use and product type without opening the product page.</span>
+                <span class="lang-es">Los tags te ayudan a ver tamano, tipo de producto y forma de consumo.</span>
+                <span class="lang-en">Tags help you identify size, product type and suggested use at a glance.</span>
               </li>
               <li>
-                <span class="lang-es">Los badges ayudan a identificar familia y categoría más rápido.</span>
-                <span class="lang-en">Badges help identify product family and category faster.</span>
+                <span class="lang-es">Cada ficha incluye resumen, precio y acceso directo al carrito.</span>
+                <span class="lang-en">Each card includes a short summary, price and direct cart access.</span>
               </li>
               <li>
-                <span class="lang-es">Los combos quedaron visibles para mejorar percepción de valor y ticket promedio.</span>
-                <span class="lang-en">Bundles are more visible to improve value perception and average order value.</span>
+                <span class="lang-es">Los combos son utiles si prefieres surtirte con un solo pedido.</span>
+                <span class="lang-en">Bundles are useful if you prefer to restock with a single order.</span>
               </li>
             </ul>
           </article>
@@ -141,21 +139,21 @@
               <span class="lang-en">Safe shopping</span>
             </p>
             <h2>
-              <span class="lang-es">Lo esencial antes de agregar al carrito.</span>
-              <span class="lang-en">What matters before adding to cart.</span>
+              <span class="lang-es">Informacion clave antes de confirmar tu pedido.</span>
+              <span class="lang-en">Key information before confirming your order.</span>
             </h2>
             <ul class="list">
               <li>
-                <span class="lang-es">Pagos visibles: tarjeta, PSE, Mercado Pago y transferencia.</span>
-                <span class="lang-en">Visible payments: cards, PSE, Mercado Pago and bank transfer.</span>
+                <span class="lang-es">Pagos por tarjeta, PSE, Mercado Pago o transferencia.</span>
+                <span class="lang-en">Payments by card, PSE, Mercado Pago or bank transfer.</span>
               </li>
               <li>
-                <span class="lang-es">Envío gratis desde COP 160.000 y tarifas definidas por región.</span>
-                <span class="lang-en">Free shipping over COP 160,000 and region-based rates.</span>
+                <span class="lang-es">Envio gratis desde COP 160.000 y cobertura nacional.</span>
+                <span class="lang-en">Free shipping over COP 160,000 with nationwide coverage.</span>
               </li>
               <li>
-                <span class="lang-es">Cambios por empaque o error de despacho reportados en 7 días.</span>
-                <span class="lang-en">Packaging or shipping issue replacements reported within 7 days.</span>
+                <span class="lang-es">Atencion por WhatsApp para confirmar disponibilidad y despacho.</span>
+                <span class="lang-en">WhatsApp support to confirm availability and dispatch details.</span>
               </li>
             </ul>
           </article>

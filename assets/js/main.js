@@ -1,7 +1,10 @@
 const STORAGE_KEYS = {
   language: "savia-col-language",
-  cartCount: "savia-col-cart-count",
+  cartItems: "savia-col-cart-items",
 };
+
+const FREE_SHIPPING_THRESHOLD = 160000;
+const WHATSAPP_NUMBER = "573108179620";
 
 const CATEGORY_META = {
   all: {
@@ -9,7 +12,7 @@ const CATEGORY_META = {
     labelEn: "All",
   },
   granolas: {
-    labelEs: "GranOLAS",
+    labelEs: "Granolas",
     labelEn: "Granolas",
   },
   pancakes: {
@@ -17,12 +20,12 @@ const CATEGORY_META = {
     labelEn: "Pancakes & Waffles",
   },
   spreads: {
-    labelEs: "Esparcibles",
+    labelEs: "Cremas",
     labelEn: "Spreads",
   },
   pantry: {
-    labelEs: "Avena & Harinas",
-    labelEn: "Oats & Flours",
+    labelEs: "Despensa",
+    labelEn: "Pantry",
   },
   bundles: {
     labelEs: "Combos",
@@ -30,397 +33,405 @@ const CATEGORY_META = {
   },
 };
 
-const PRODUCTS = [
+const TONE_META = {
+  rose: {
+    bg: "#F9E4DF",
+    bgSoft: "#FFF4F2",
+    accent: "#D47772",
+    deep: "#7B3B47",
+    leaf: "#8EAF92",
+  },
+  gold: {
+    bg: "#F5E5B9",
+    bgSoft: "#FFF8E6",
+    accent: "#D0A144",
+    deep: "#765420",
+    leaf: "#93A96E",
+  },
+  leaf: {
+    bg: "#DDE9D8",
+    bgSoft: "#F6FBF4",
+    accent: "#5F8A62",
+    deep: "#284A35",
+    leaf: "#9AC29A",
+  },
+  cocoa: {
+    bg: "#E4D4C8",
+    bgSoft: "#FBF5F0",
+    accent: "#8B5A3C",
+    deep: "#4A2D21",
+    leaf: "#A4B28F",
+  },
+  berry: {
+    bg: "#E9D4DF",
+    bgSoft: "#FCF4F8",
+    accent: "#B35F84",
+    deep: "#64314A",
+    leaf: "#9DB4A0",
+  },
+};
+
+const PRODUCT_SEED = [
   {
     slug: "short-sweet-bundle",
     category: "bundles",
     tone: "rose",
-    familyEs: "Combo curado",
-    familyEn: "Curated bundle",
-    name: "Short & Sweet Bundle",
-    lineEs: "Oat Brina Carpenter",
-    lineEn: "Oat Brina Carpenter",
+    familyEs: "Combo para la semana",
+    familyEn: "Week-ready bundle",
+    name: "Ritual de Manana",
+    lineEs: "Dos favoritos XL",
+    lineEn: "Two XL favorites",
     descriptionEs:
-      "Dos referencias XL para desayunos con textura, antojo controlado y mejor ticket promedio desde el primer clic.",
+      "Una combinacion pensada para dejar desayunos y onces resueltos con un solo pedido.",
     descriptionEn:
-      "Two XL references for breakfasts with texture, controlled craving and a stronger average order value from the first click.",
-    size: "2 productos XL",
+      "A combination designed to cover breakfasts and snack breaks with a single order.",
+    size: "2 formatos XL",
     price: 112000,
     oldPrice: 135743,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2026/02/PN_MissOatBrina_Nube_V3-1024x1024.png",
-    tagsEs: ["2 productos XL", "Ahorro visible", "Ideal para regalar"],
-    tagsEn: ["2 XL products", "Visible savings", "Great for gifting"],
-    useEs: "Desayunos compartidos, regalo y recompra semanal.",
-    useEn: "Shared breakfasts, gifting and weekly restocking.",
-    flavorEs: "Selección dulce y práctica",
-    flavorEn: "Sweet, practical selection",
-    baseEs: "Curaduría lista para carrito",
-    baseEn: "Cart-ready curation",
+    tagsEs: ["Ahorro especial", "Ideal para compartir", "Listo para la semana"],
+    tagsEn: ["Special savings", "Great to share", "Week-ready"],
+    useEs: "Perfecto para hogares que prefieren organizar la semana desde el domingo.",
+    useEn: "Perfect for households that like to organize the week ahead.",
+    flavorEs: "Selección dulce y tostada",
+    flavorEn: "Sweet and toasted selection",
+    baseEs: "Granola y mezcla de preparacion rapida",
+    baseEn: "Granola and quick-prep mix",
   },
   {
     slug: "soft-chaos-bundle",
     category: "bundles",
     tone: "gold",
-    familyEs: "Combo favorito",
-    familyEn: "Fan-favorite bundle",
-    name: "Soft Chaos Bundle",
-    lineEs: "Cocoachii",
-    lineEn: "Cocoachii",
+    familyEs: "Combo de texturas",
+    familyEn: "Texture-focused bundle",
+    name: "Duo de Crunch",
+    lineEs: "Granola regular + XL",
+    lineEn: "Regular granola + XL",
     descriptionEs:
-      "Una mezcla de GranOLA XL y GranOLA regular para usuarios que quieren probar más sin saturar la decisión.",
+      "Dos tamanos para alternar entre porciones personales y un formato grande para toda la casa.",
     descriptionEn:
-      "A mix of XL GranOLA and regular GranOLA for shoppers who want more variety without decision overload.",
-    size: "1 GranOLA XL + 1 GranOLA",
+      "Two sizes to alternate between personal portions and a larger format for the whole home.",
+    size: "1 granola + 1 granola XL",
     price: 106000,
     oldPrice: 125764,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2026/02/PN_Cocoachi_Nube-v4-1024x1024.png",
-    tagsEs: ["Bundle mixto", "Mayor valor", "Top de entrada"],
-    tagsEn: ["Mixed bundle", "Higher value", "Top entry pick"],
-    useEs: "Compra de descubrimiento y primera experiencia con la marca.",
-    useEn: "Discovery purchase and first brand experience.",
-    flavorEs: "Crujiente con rotación de formatos",
-    flavorEn: "Crunchy with mixed formats",
-    baseEs: "Selección dulce en dos escalas",
-    baseEn: "Sweet selection in two sizes",
+    tagsEs: ["Surtido variado", "Buen regalo", "Favorito para desayuno"],
+    tagsEn: ["Variety pack", "Great gift", "Breakfast favorite"],
+    useEs: "Ideal si quieres probar dos formatos y mantener un mismo perfil de sabor.",
+    useEn: "Ideal if you want to try two formats while keeping the same flavor profile.",
+    flavorEs: "Crujiente, tostado y amable",
+    flavorEn: "Crunchy, toasted and comforting",
+    baseEs: "Granola artesanal sin gluten",
+    baseEn: "Craft gluten-free granola",
   },
   {
     slug: "back-to-routine",
     category: "bundles",
     tone: "leaf",
-    familyEs: "Combo premium",
-    familyEn: "Premium bundle",
-    name: "Back To Routine",
-    lineEs: "Elige tus favoritos",
-    lineEn: "Pick your favorites",
+    familyEs: "Combo completo",
+    familyEn: "Complete bundle",
+    name: "Regreso en Calma",
+    lineEs: "Granola, crema y mezcla",
+    lineEn: "Granola, spread and mix",
     descriptionEs:
-      "El bundle más completo del catálogo: mezcla, GranOLA, spread y wafflera para una rutina visualmente potente y fácil de vender.",
+      "Un combo para surtir la alacena con desayuno, snack y opciones para compartir en casa.",
     descriptionEn:
-      "The most complete bundle in the catalog: mix, GranOLA, spread and waffle maker for a visually rich routine that is easy to merchandise.",
-    size: "Combo multiproducto",
+      "A bundle to stock the pantry with breakfast, snacks and easy options to share at home.",
+    size: "Combo familiar",
     price: 196000,
     oldPrice: 276320,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2025/01/PN_BackToRoutine_Nube.gif",
-    tagsEs: ["Bundle héroe", "Regalo premium", "Mayor ticket"],
-    tagsEn: ["Hero bundle", "Premium gift", "Highest ticket"],
-    useEs: "Regalo, onboarding o compra completa de inicio de mes.",
-    useEn: "Gifting, onboarding or a complete monthly restock.",
-    flavorEs: "Mix total para rutina saludable",
-    flavorEn: "Full mix for a healthy routine",
-    baseEs: "Colección modular",
-    baseEn: "Modular collection",
+    tagsEs: ["Mas completo", "Compra grande", "Hecho para surtirse"],
+    tagsEn: ["Most complete", "Larger order", "Made for restocking"],
+    useEs: "Pensado para quien quiere varias categorias en un solo pedido.",
+    useEn: "Designed for shoppers who want several categories in one order.",
+    flavorEs: "Seleccion variada para todos los dias",
+    flavorEn: "Varied selection for everyday routines",
+    baseEs: "Despensa saludable en un solo combo",
+    baseEn: "Healthy pantry in one bundle",
   },
   {
     slug: "granola-pistacho",
     category: "granolas",
     tone: "leaf",
-    familyEs: "Gluten Free GranOLA",
-    familyEn: "Gluten Free GranOLA",
-    name: "Buttery Pistachio Cookie",
-    lineEs: "GranOLA de pistacho",
-    lineEn: "Pistachio GranOLA",
+    familyEs: "Granola sin gluten",
+    familyEn: "Gluten-free granola",
+    name: "Pistacho Dorado",
+    lineEs: "Tostado artesanal",
+    lineEn: "Artisan toasted blend",
     descriptionEs:
-      "Sabor redondo, visual limpio y buen contraste para destacar como favorito de anaquel digital.",
+      "Crujiente, suave y facil de combinar con yogur, fruta fresca o bowls de la manana.",
     descriptionEn:
-      "Rounded flavor, clean visuals and strong contrast to stand out as a digital shelf favorite.",
+      "Crunchy, smooth and easy to pair with yogurt, fresh fruit or breakfast bowls.",
     size: "Regular",
     price: 44950,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2025/08/PN_Granola_Pistacho_Nube_v1-1024x1024.png",
-    tagsEs: ["Gluten free", "Pistacho", "Snack o topping"],
-    tagsEn: ["Gluten free", "Pistachio", "Snack or topping"],
-    useEs: "Bowls, yogur, media tarde y desayuno rápido.",
-    useEn: "Bowls, yogurt, afternoon snack and fast breakfasts.",
-    flavorEs: "Buttery Pistachio Cookie",
-    flavorEn: "Buttery Pistachio Cookie",
-    baseEs: "Crujiente, lista para servir",
-    baseEn: "Crunchy, ready to serve",
+    tagsEs: ["Pistacho", "Snack o topping", "Favorita de la casa"],
+    tagsEn: ["Pistachio", "Snack or topping", "House favorite"],
+    useEs: "Queda bien con yogur natural, fruta picada y mantequilla de frutos secos.",
+    useEn: "Pairs well with plain yogurt, sliced fruit and nut butter.",
+    flavorEs: "Pistacho con notas de galleta",
+    flavorEn: "Pistachio with cookie notes",
+    baseEs: "Granola tostada lista para servir",
+    baseEn: "Toasted granola ready to serve",
   },
   {
     slug: "granola-chip-cookie-xl",
     category: "granolas",
     tone: "cocoa",
-    familyEs: "Gluten Free GranOLA",
-    familyEn: "Gluten Free GranOLA",
-    name: "Chocolate Chip Cookie XL",
-    lineEs: "GranOLA XL",
-    lineEn: "XL GranOLA",
+    familyEs: "Granola sin gluten",
+    familyEn: "Gluten-free granola",
+    name: "Choco Crunch XL",
+    lineEs: "Formato familiar",
+    lineEn: "Family-size format",
     descriptionEs:
-      "Formato ampliado para hogares que compran por volumen y quieren una referencia dominante en la grilla.",
+      "Una granola amplia para quienes desayunan a diario y prefieren comprar en volumen.",
     descriptionEn:
-      "Expanded format for households that buy in volume and want a strong shelf presence on the grid.",
+      "A larger granola for daily breakfasts and households that prefer buying in volume.",
     size: "XL / 710 g",
     price: 80834,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2024/07/PN_ChioCookie_Nube_v3-1024x1024.png",
-    tagsEs: ["Formato XL", "Chocolate chip", "Compra familiar"],
-    tagsEn: ["XL size", "Chocolate chip", "Family size"],
-    useEs: "Reposición de despensa y desayunos de alta rotación.",
-    useEn: "Pantry restocking and high-rotation breakfasts.",
-    flavorEs: "Chocolate Chip Cookie XL",
-    flavorEn: "Chocolate Chip Cookie XL",
-    baseEs: "Crujiente con alto rendimiento",
-    baseEn: "Crunchy with strong yield",
+    tagsEs: ["Formato XL", "Cacao", "Rinde mas"],
+    tagsEn: ["XL size", "Cocoa", "Goes further"],
+    useEs: "Ideal para bowls grandes, loncheras y desayunos de toda la semana.",
+    useEn: "Ideal for big bowls, lunchboxes and breakfasts throughout the week.",
+    flavorEs: "Cacao tostado con chips",
+    flavorEn: "Toasted cocoa with chips",
+    baseEs: "Granola crocante de porcion grande",
+    baseEn: "Crisp granola in a large format",
   },
   {
     slug: "granola-fudge-cake-xl",
     category: "granolas",
     tone: "berry",
-    familyEs: "Gluten Free GranOLA",
-    familyEn: "Gluten Free GranOLA",
-    name: "Cocoa Fudge Cake XL",
-    lineEs: "GranOLA XL",
-    lineEn: "XL GranOLA",
+    familyEs: "Granola sin gluten",
+    familyEn: "Gluten-free granola",
+    name: "Cacao Fudge XL",
+    lineEs: "Perfil intenso",
+    lineEn: "Deeper flavor profile",
     descriptionEs:
-      "Una referencia indulgente que empuja la compra por antojo sin perder el lenguaje saludable del catálogo.",
+      "Para quienes disfrutan un desayuno mas goloso sin salir de una rutina practica.",
     descriptionEn:
-      "An indulgent reference that drives desire-led shopping without losing the healthy language of the catalog.",
-    size: "XL",
+      "For shoppers who enjoy a richer breakfast while keeping an easy daily routine.",
+    size: "XL / 710 g",
     price: 80834,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2026/01/PN_FudgeCake_Nube_v3-1024x1024.png",
-    tagsEs: ["Cocoa", "Formato XL", "Antojo premium"],
-    tagsEn: ["Cocoa", "XL size", "Premium craving"],
-    useEs: "Desayuno indulgente, topping y consumo recurrente.",
-    useEn: "Indulgent breakfast, topping and recurring use.",
-    flavorEs: "Cocoa Fudge Cake XL",
-    flavorEn: "Cocoa Fudge Cake XL",
-    baseEs: "Crujiente con perfil profundo",
-    baseEn: "Crunchy with a deeper flavor profile",
+    tagsEs: ["Intensa", "XL", "Para bowls"],
+    tagsEn: ["Richer flavor", "XL", "For bowls"],
+    useEs: "Funciona muy bien sobre yogur griego, fruta roja o helado casero.",
+    useEn: "Works beautifully over Greek yogurt, berries or homemade ice cream.",
+    flavorEs: "Cacao profundo y crocante",
+    flavorEn: "Deep cocoa crunch",
+    baseEs: "Granola horneada de formato amplio",
+    baseEn: "Baked granola in a larger format",
   },
   {
     slug: "spread-pistachio-xl",
     category: "spreads",
     tone: "leaf",
-    familyEs: "Crema a base de Pistachos & Almendras",
-    familyEn: "Pistachio & Almond spread",
-    name: "Galleta de Pistacho XL",
-    lineEs: "Spread premium",
-    lineEn: "Premium spread",
+    familyEs: "Crema para untar",
+    familyEn: "Spreadable cream",
+    name: "Crema de Pistacho",
+    lineEs: "Textura suave",
+    lineEn: "Silky texture",
     descriptionEs:
-      "Untable protagonista para subir percepción de valor con color, textura y sabor más aspiracional.",
+      "Una crema cremosa y aromatica para tostadas, fruta, pancakes y postres sencillos.",
     descriptionEn:
-      "A hero spread that lifts perceived value through color, texture and a more aspirational flavor profile.",
+      "A creamy, aromatic spread for toast, fruit, pancakes and simple desserts.",
     size: "XL",
     price: 64000,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2024/08/PN_Pistacho_Nube_v4-1024x1024.png",
-    tagsEs: ["Pistacho", "Premium", "Textura cremosa"],
-    tagsEn: ["Pistachio", "Premium", "Creamy texture"],
-    useEs: "Tostadas, postres simples, bowls y regalo foodie.",
-    useEn: "Toast, simple desserts, bowls and foodie gifting.",
-    flavorEs: "Galleta de Pistacho XL",
-    flavorEn: "Pistachio Cookie XL",
-    baseEs: "Untable cremoso",
-    baseEn: "Creamy spread",
+    tagsEs: ["Pistacho", "Cremosa", "Para compartir"],
+    tagsEn: ["Pistachio", "Creamy", "Great to share"],
+    useEs: "Pruebala con pan tostado, wafles, banana o como relleno rapido.",
+    useEn: "Try it with toast, waffles, banana or as a quick filling.",
+    flavorEs: "Pistacho suave y tostado",
+    flavorEn: "Smooth toasted pistachio",
+    baseEs: "Crema untable de frutos secos",
+    baseEn: "Nut-based spread",
   },
   {
     slug: "spread-chocolate-cremoso-xl",
     category: "spreads",
     tone: "cocoa",
-    familyEs: "Crema a base de Almendras & Avellanas",
-    familyEn: "Almond & hazelnut cream",
-    name: "Chocolate Cremoso XL",
-    lineEs: "Spread clásico",
-    lineEn: "Classic spread",
+    familyEs: "Crema para untar",
+    familyEn: "Spreadable cream",
+    name: "Cacao y Avellana",
+    lineEs: "Favorita para tostadas",
+    lineEn: "Toast favorite",
     descriptionEs:
-      "El producto puente entre antojo y confianza: reconocible, fácil de explicar y con alta intención de recompra.",
+      "Sabor familiar, textura cremosa y un formato generoso para tener siempre a mano.",
     descriptionEn:
-      "The bridge product between desire and trust: recognizable, easy to explain and highly likely to be repurchased.",
+      "Familiar flavor, creamy texture and a generous format to keep close every day.",
     size: "XL",
     price: 52400,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2024/01/PN_Creamy_Nube_V5-1024x1024.png",
-    tagsEs: ["Chocolate", "Hazelnut style", "Best seller"],
-    tagsEn: ["Chocolate", "Hazelnut style", "Best seller"],
-    useEs: "Tostadas, pancakes, lonchera y snack dulce.",
-    useEn: "Toast, pancakes, lunchbox and sweet snacking.",
-    flavorEs: "Chocolate Cremoso XL",
-    flavorEn: "Creamy Chocolate XL",
-    baseEs: "Cremoso y muy versátil",
-    baseEn: "Creamy and highly versatile",
+    tagsEs: ["Cacao", "Avellana", "Muy versatil"],
+    tagsEn: ["Cocoa", "Hazelnut", "Highly versatile"],
+    useEs: "Combina bien con tostadas, galletas, fruta y mezclas para brunch.",
+    useEn: "Pairs well with toast, crackers, fruit and brunch mixes.",
+    flavorEs: "Chocolate suave con avellana",
+    flavorEn: "Smooth chocolate with hazelnut",
+    baseEs: "Crema untable de textura sedosa",
+    baseEn: "Silky spread",
   },
   {
     slug: "spread-banana-shake",
     category: "spreads",
     tone: "gold",
-    familyEs: "Esparcible a base de Maní y Nueces",
-    familyEn: "Peanut and nut spread",
-    name: "Banana Shake",
-    lineEs: "Spread con sabor icónico",
-    lineEn: "Signature spread flavor",
+    familyEs: "Crema para untar",
+    familyEn: "Spreadable cream",
+    name: "Mani con Banano",
+    lineEs: "Dulce y suave",
+    lineEn: "Sweet and smooth",
     descriptionEs:
-      "Una opción más juguetona para ampliar la percepción del catálogo sin perder coherencia con bienestar y snack funcional.",
+      "Una opcion amable para medias mananas, smoothies, loncheras y tostadas tibias.",
     descriptionEn:
-      "A more playful option to expand the catalog perception without losing coherence with wellness and functional snacking.",
+      "A gentle option for mid-mornings, smoothies, lunchboxes and warm toast.",
     size: "Regular",
     price: 48590,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2022/11/PN_PB_Nube_V1-1024x1024.png",
-    tagsEs: ["Maní", "Snack", "Perfil divertido"],
-    tagsEn: ["Peanut", "Snack", "Playful flavor"],
-    useEs: "Smoothies, tostadas, fruta y media mañana.",
-    useEn: "Smoothies, toast, fruit and mid-morning use.",
-    flavorEs: "Banana Shake",
-    flavorEn: "Banana Shake",
-    baseEs: "Untable con toque dulce",
-    baseEn: "Spread with a sweet twist",
+    tagsEs: ["Mani", "Banano", "Snack facil"],
+    tagsEn: ["Peanut", "Banana", "Easy snack"],
+    useEs: "Ideal para fruta, smoothies y tostadas con canela o granola por encima.",
+    useEn: "Ideal with fruit, smoothies and toast finished with cinnamon or granola.",
+    flavorEs: "Mani tostado con banano",
+    flavorEn: "Toasted peanut with banana",
+    baseEs: "Crema untable con frutos secos",
+    baseEn: "Nut spread",
   },
   {
     slug: "pancake-vainilla-xl",
     category: "pancakes",
     tone: "gold",
-    familyEs: "Mezcla lista para Pancakes & Waffles",
-    familyEn: "Ready mix for Pancakes & Waffles",
-    name: "Vainilla XL",
-    lineEs: "A base de avena",
-    lineEn: "Oat-based",
+    familyEs: "Mezcla para pancakes",
+    familyEn: "Pancake mix",
+    name: "Vainilla Avena XL",
+    lineEs: "Formato grande",
+    lineEn: "Larger format",
     descriptionEs:
-      "Una mezcla grande y familiar para resolver desayuno sin fricción, con mensaje funcional y fácil comparación visual.",
+      "Una mezcla pensada para desayunos de varios dias, brunch en casa y tandas grandes.",
     descriptionEn:
-      "A larger family-ready mix that solves breakfast with low friction and a visually easy value message.",
+      "A mix designed for several breakfast moments, home brunch and bigger batches.",
     size: "XL / 907 g",
     price: 84522,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2024/07/PN_Vainilla_Nube_v3-1024x1024.png",
-    tagsEs: ["Avena", "XL", "Desayuno rápido"],
-    tagsEn: ["Oat-based", "XL", "Fast breakfast"],
-    useEs: "Batch cooking, brunch y desayuno recurrente.",
-    useEn: "Batch cooking, brunch and recurring breakfasts.",
-    flavorEs: "Vainilla XL",
-    flavorEn: "Vanilla XL",
-    baseEs: "Mezcla lista para preparar",
-    baseEn: "Ready-to-make mix",
+    tagsEs: ["Avena", "Formato XL", "Brunch en casa"],
+    tagsEn: ["Oat-based", "XL size", "Home brunch"],
+    useEs: "Sirve para pancakes, waffles y recetas dulces con fruta o miel.",
+    useEn: "Works for pancakes, waffles and sweet recipes with fruit or honey.",
+    flavorEs: "Vainilla suave",
+    flavorEn: "Soft vanilla",
+    baseEs: "Mezcla a base de avena",
+    baseEn: "Oat-based mix",
   },
   {
     slug: "pancake-chips-almendra",
     category: "pancakes",
     tone: "berry",
-    familyEs: "Mezcla lista para Pancakes & Waffles",
-    familyEn: "Ready mix for Pancakes & Waffles",
+    familyEs: "Mezcla para pancakes",
+    familyEn: "Pancake mix",
     name: "Chips de Chocolate",
-    lineEs: "A base de almendra",
+    lineEs: "Base de almendra",
     lineEn: "Almond-based",
     descriptionEs:
-      "Sabor fácil de vender y fotografiar. Funciona como punto medio entre indulgencia y desayuno práctico.",
+      "Una mezcla para dias especiales, brunch largo o desayunos con antojo de chocolate.",
     descriptionEn:
-      "An easy-to-sell, easy-to-photograph flavor. It works as a midpoint between indulgence and convenience.",
+      "A mix for special mornings, long brunches or chocolate-leaning breakfasts.",
     size: "285 g",
     price: 41690,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2022/06/PN_Chips_Nube_v1-1024x1024.png",
-    tagsEs: ["Almendra", "Chocolate chips", "Rinde brunch"],
-    tagsEn: ["Almond-based", "Chocolate chips", "Brunch friendly"],
-    useEs: "Brunch casero, antojo dulce y desayunos especiales.",
-    useEn: "Home brunch, sweet cravings and special breakfasts.",
-    flavorEs: "Chips de Chocolate",
-    flavorEn: "Chocolate Chips",
-    baseEs: "Mezcla de preparación rápida",
-    baseEn: "Quick-prep mix",
+    tagsEs: ["Almendra", "Chocolate", "Para brunch"],
+    tagsEn: ["Almond-based", "Chocolate", "Brunch-ready"],
+    useEs: "Ideal con fruta fresca, crema de cacao y cafe recien hecho.",
+    useEn: "Ideal with fresh fruit, chocolate spread and freshly brewed coffee.",
+    flavorEs: "Chocolate suave",
+    flavorEn: "Soft chocolate",
+    baseEs: "Mezcla a base de almendra",
+    baseEn: "Almond-based mix",
   },
   {
     slug: "pancake-brownie",
     category: "pancakes",
     tone: "cocoa",
-    familyEs: "Mezcla lista para Pancakes & Waffles",
-    familyEn: "Ready mix for Pancakes & Waffles",
-    name: "Brownie",
-    lineEs: "A base de avena",
-    lineEn: "Oat-based",
+    familyEs: "Mezcla para pancakes",
+    familyEn: "Pancake mix",
+    name: "Brownie Avena",
+    lineEs: "Perfil de cacao",
+    lineEn: "Cocoa profile",
     descriptionEs:
-      "Referencia para compradores que buscan sabor intenso pero una preparación directa y rápida de entender.",
+      "Textura suave y sabor intenso para recetas de fin de semana o meriendas tibias.",
     descriptionEn:
-      "A reference for shoppers who want deep flavor with a direct, easy-to-understand preparation flow.",
+      "Soft texture and a richer flavor for weekend recipes or warm afternoon treats.",
     size: "300 g",
     price: 32890,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2022/06/PN_Brownie_Nube_v1-1-1024x1024.png",
-    tagsEs: ["Brownie", "Oat-based", "Desayuno indulgente"],
-    tagsEn: ["Brownie", "Oat-based", "Indulgent breakfast"],
-    useEs: "Fin de semana, merienda y contenido social atractivo.",
-    useEn: "Weekend cooking, snacks and social-ready content.",
-    flavorEs: "Brownie",
-    flavorEn: "Brownie",
-    baseEs: "Mezcla dulce con avena",
-    baseEn: "Sweet oat mix",
+    tagsEs: ["Avena", "Brownie", "Para merendar"],
+    tagsEn: ["Oat-based", "Brownie", "Snack-friendly"],
+    useEs: "Acompanalo con banano, yogur natural o una cucharada de crema de mani.",
+    useEn: "Enjoy it with banana, plain yogurt or a spoonful of peanut spread.",
+    flavorEs: "Cacao tipo brownie",
+    flavorEn: "Brownie-style cocoa",
+    baseEs: "Mezcla a base de avena",
+    baseEn: "Oat-based mix",
   },
   {
     slug: "avena-hojuelas-xl",
     category: "pantry",
     tone: "leaf",
-    familyEs: "Avena & Harinas",
-    familyEn: "Oats & Flours",
+    familyEs: "Basico de despensa",
+    familyEn: "Pantry staple",
     name: "Avena en Hojuelas XL",
-    lineEs: "Libre de gluten",
-    lineEn: "Gluten free",
+    lineEs: "Rinde mas",
+    lineEn: "Larger yield",
     descriptionEs:
-      "La base funcional del catálogo: clara, simple y útil para usuarios que quieren pantry staples sin ruido visual.",
+      "Un basico para desayunos, horneados y preparaciones simples de todos los dias.",
     descriptionEn:
-      "The functional base of the catalog: clear, simple and useful for shoppers who want pantry staples without visual noise.",
+      "A pantry staple for breakfasts, baking and everyday simple preparations.",
     size: "2000 g",
     price: 56430,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2024/07/PN_AvenaHojuelasXl_Nube_v3-1024x1024.png",
-    tagsEs: ["2 kg", "Pantry staple", "Libre de gluten"],
-    tagsEn: ["2 kg", "Pantry staple", "Gluten free"],
-    useEs: "Avena caliente, horneados y compra de volumen.",
-    useEn: "Warm oats, baking and volume buying.",
-    flavorEs: "Base neutra de alta rotación",
-    flavorEn: "High-rotation neutral base",
-    baseEs: "Ingrediente esencial",
-    baseEn: "Essential pantry ingredient",
+    tagsEs: ["2 kg", "Sin gluten", "Para cocinar"],
+    tagsEn: ["2 kg", "Gluten-free", "For cooking"],
+    useEs: "Util para avena caliente, galletas, pancakes y granola casera.",
+    useEn: "Useful for warm oats, cookies, pancakes and homemade granola.",
+    flavorEs: "Base neutra y versatil",
+    flavorEn: "Neutral, versatile base",
+    baseEs: "Avena en hojuelas gruesas",
+    baseEn: "Rolled oats",
   },
   {
     slug: "harina-avena",
     category: "pantry",
     tone: "gold",
-    familyEs: "Avena & Harinas",
-    familyEn: "Oats & Flours",
+    familyEs: "Basico de despensa",
+    familyEn: "Pantry staple",
     name: "Harina de Avena",
-    lineEs: "Libre de gluten",
-    lineEn: "Gluten free",
+    lineEs: "Para hornear",
+    lineEn: "Made for baking",
     descriptionEs:
-      "Un producto ancla para cocina casera y usuarios que comparan valor por funcionalidad antes que por sabor.",
+      "Practica para muffins, pancakes, galletas y mezclas caseras de uso diario.",
     descriptionEn:
-      "An anchor product for home cooking and shoppers who compare value by functionality rather than flavor.",
+      "Practical for muffins, pancakes, cookies and everyday homemade mixes.",
     size: "1000 g",
     price: 31350,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2022/06/PN_Harina_Avena_Nube-1024x1024.png",
-    tagsEs: ["1 kg", "Horneados", "Base versátil"],
-    tagsEn: ["1 kg", "Baking", "Versatile base"],
-    useEs: "Pancakes, repostería simple y recetas funcionales.",
-    useEn: "Pancakes, simple baking and functional recipes.",
-    flavorEs: "Base neutra para mezclar",
-    flavorEn: "Neutral base for mixing",
-    baseEs: "Harina de avena funcional",
-    baseEn: "Functional oat flour",
+    tagsEs: ["1 kg", "Para reposteria", "Textura fina"],
+    tagsEn: ["1 kg", "For baking", "Fine texture"],
+    useEs: "Funciona bien en panes suaves, pancakes y masas con fruta o miel.",
+    useEn: "Works well in soft breads, pancakes and doughs with fruit or honey.",
+    flavorEs: "Avena suave",
+    flavorEn: "Gentle oat flavor",
+    baseEs: "Harina fina de avena",
+    baseEn: "Fine oat flour",
   },
   {
     slug: "harina-almendra",
     category: "pantry",
     tone: "rose",
-    familyEs: "Avena & Harinas",
-    familyEn: "Oats & Flours",
+    familyEs: "Basico de despensa",
+    familyEn: "Pantry staple",
     name: "Harina de Almendra",
-    lineEs: "Libre de gluten",
-    lineEn: "Gluten free",
+    lineEs: "Textura ligera",
+    lineEn: "Lighter texture",
     descriptionEs:
-      "Sube percepción premium dentro del surtido básico y ayuda a construir una categoría de ingredientes con más margen.",
+      "Una opcion practica para horneados suaves, recetas bajas en harina tradicional y mezclas propias.",
     descriptionEn:
-      "It lifts the premium perception of the staple assortment and helps build a more profitable ingredients category.",
+      "A practical option for soft baking, lower-flour recipes and custom blends.",
     size: "250 g",
     price: 34650,
-    image:
-      "https://whynot-bkt.s3.amazonaws.com/wp-content/uploads/2022/06/PN_Harina_Almendra_Nube-1024x1024.png",
-    tagsEs: ["Almendra", "Premium pantry", "Sin gluten"],
-    tagsEn: ["Almond", "Premium pantry", "Gluten free"],
-    useEs: "Horneados, recetas low carb y mezcla con otras harinas.",
-    useEn: "Baking, low-carb recipes and flour blending.",
-    flavorEs: "Base premium para cocinar",
-    flavorEn: "Premium base for cooking",
+    tagsEs: ["Almendra", "Para hornear", "Formato practico"],
+    tagsEn: ["Almond", "For baking", "Handy format"],
+    useEs: "Ideal para waffles, galletas suaves y masas con especias o vainilla.",
+    useEn: "Ideal for waffles, soft cookies and doughs with spices or vanilla.",
+    flavorEs: "Almendra suave",
+    flavorEn: "Soft almond flavor",
     baseEs: "Harina fina de almendra",
     baseEn: "Fine almond flour",
   },
@@ -437,18 +448,7 @@ function fromRoot(path) {
 }
 
 function currentLanguage() {
-  return localStorage.getItem(STORAGE_KEYS.language) || "es";
-}
-
-function currentCartCount() {
-  return Number(localStorage.getItem(STORAGE_KEYS.cartCount) || 0);
-}
-
-function setCartCount(count) {
-  localStorage.setItem(STORAGE_KEYS.cartCount, String(count));
-  document.querySelectorAll("[data-cart-count]").forEach((node) => {
-    node.textContent = String(count);
-  });
+  return localStorage.getItem(STORAGE_KEYS.language) || document.body.dataset.language || "es";
 }
 
 function bilingualText(es, en) {
@@ -476,6 +476,258 @@ function pageForNavigation(page) {
   return page === "producto" ? "catalogo" : page;
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function escapeSvg(value) {
+  return escapeHtml(value);
+}
+
+function splitLabel(text, maxWordsPerLine = 2) {
+  const words = String(text).split(/\s+/).filter(Boolean);
+  const lines = [];
+
+  while (words.length) {
+    lines.push(words.splice(0, maxWordsPerLine).join(" "));
+  }
+
+  return lines.slice(0, 2);
+}
+
+function svgDataUri(svg) {
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function productPalette(product) {
+  return TONE_META[product.tone] || TONE_META.leaf;
+}
+
+function bundleArtwork(palette) {
+  return `
+    <ellipse cx="320" cy="500" rx="160" ry="26" fill="${palette.deep}" opacity="0.10" />
+    <g transform="translate(160 190)">
+      <rect x="0" y="58" width="120" height="210" rx="28" fill="#fff8f5" stroke="${palette.deep}" stroke-opacity="0.12" />
+      <rect x="28" y="36" width="64" height="50" rx="18" fill="${palette.bg}" />
+      <rect x="148" y="0" width="150" height="270" rx="32" fill="white" stroke="${palette.deep}" stroke-opacity="0.12" />
+      <rect x="184" y="34" width="78" height="58" rx="20" fill="${palette.bg}" />
+      <rect x="322" y="76" width="110" height="190" rx="26" fill="#fff6f0" stroke="${palette.deep}" stroke-opacity="0.12" />
+      <rect x="346" y="110" width="62" height="46" rx="16" fill="${palette.bg}" />
+      <path d="M148 132 C212 112 232 112 298 132" fill="none" stroke="${palette.accent}" stroke-width="10" stroke-linecap="round" />
+      <path d="M20 170 C54 154 70 154 102 170" fill="none" stroke="${palette.accent}" stroke-width="8" stroke-linecap="round" />
+      <path d="M336 182 C364 166 382 166 416 182" fill="none" stroke="${palette.accent}" stroke-width="8" stroke-linecap="round" />
+    </g>
+  `;
+}
+
+function granolaArtwork(palette) {
+  return `
+    <ellipse cx="320" cy="514" rx="164" ry="24" fill="${palette.deep}" opacity="0.10" />
+    <g transform="translate(170 158)">
+      <path d="M70 0 H230 L260 230 Q150 286 40 230 Z" fill="white" stroke="${palette.deep}" stroke-opacity="0.10" />
+      <path d="M70 0 H230 L214 54 H86 Z" fill="${palette.bg}" />
+      <rect x="92" y="76" width="116" height="78" rx="26" fill="${palette.bgSoft}" />
+      <path d="M0 260 Q150 352 300 260 L270 330 H30 Z" fill="${palette.accent}" opacity="0.90" />
+      <path d="M28 260 Q150 320 272 260" fill="none" stroke="white" stroke-opacity="0.45" stroke-width="8" />
+      <circle cx="92" cy="244" r="16" fill="${palette.gold || palette.bg}" />
+      <circle cx="132" cy="226" r="12" fill="${palette.leaf}" opacity="0.8" />
+      <circle cx="164" cy="242" r="14" fill="${palette.accent}" opacity="0.7" />
+      <circle cx="204" cy="228" r="12" fill="${palette.deep}" opacity="0.18" />
+      <circle cx="226" cy="248" r="10" fill="${palette.leaf}" opacity="0.7" />
+    </g>
+  `;
+}
+
+function spreadArtwork(palette) {
+  return `
+    <ellipse cx="320" cy="516" rx="156" ry="22" fill="${palette.deep}" opacity="0.10" />
+    <g transform="translate(176 178)">
+      <rect x="88" y="0" width="192" height="54" rx="20" fill="${palette.deep}" opacity="0.86" />
+      <rect x="48" y="50" width="272" height="230" rx="52" fill="white" stroke="${palette.deep}" stroke-opacity="0.10" />
+      <rect x="86" y="94" width="196" height="104" rx="30" fill="${palette.bg}" />
+      <rect x="66" y="304" width="140" height="18" rx="9" fill="${palette.deep}" opacity="0.10" />
+      <path d="M254 278 C320 250 356 250 404 290" fill="none" stroke="${palette.accent}" stroke-width="16" stroke-linecap="round" />
+      <path d="M362 256 C390 236 420 244 432 268" fill="none" stroke="${palette.deep}" stroke-width="10" stroke-linecap="round" opacity="0.30" />
+    </g>
+  `;
+}
+
+function pancakeArtwork(palette) {
+  return `
+    <ellipse cx="320" cy="516" rx="166" ry="22" fill="${palette.deep}" opacity="0.10" />
+    <g transform="translate(146 176)">
+      <path d="M0 22 Q0 0 22 0 H164 Q188 0 188 24 V246 Q188 270 164 270 H24 Q0 270 0 246 Z" fill="white" stroke="${palette.deep}" stroke-opacity="0.10" />
+      <rect x="28" y="52" width="132" height="82" rx="24" fill="${palette.bg}" />
+      <g transform="translate(236 82)">
+        <ellipse cx="98" cy="142" rx="112" ry="26" fill="${palette.deep}" opacity="0.08" />
+        <ellipse cx="98" cy="126" rx="108" ry="26" fill="#F0C97A" />
+        <ellipse cx="98" cy="102" rx="102" ry="24" fill="#F6D48C" />
+        <ellipse cx="98" cy="78" rx="96" ry="23" fill="#F8DFA4" />
+        <path d="M82 28 C104 40 118 50 128 72" fill="none" stroke="${palette.accent}" stroke-width="14" stroke-linecap="round" />
+      </g>
+    </g>
+  `;
+}
+
+function pantryArtwork(palette) {
+  return `
+    <ellipse cx="320" cy="518" rx="156" ry="22" fill="${palette.deep}" opacity="0.10" />
+    <g transform="translate(164 166)">
+      <path d="M78 0 H246 L270 268 Q162 316 54 268 Z" fill="white" stroke="${palette.deep}" stroke-opacity="0.10" />
+      <path d="M90 0 H234 L220 58 H104 Z" fill="${palette.bg}" />
+      <rect x="104" y="86" width="116" height="90" rx="28" fill="${palette.bgSoft}" />
+      <path d="M298 256 Q364 310 430 256 L408 314 H320 Z" fill="${palette.accent}" opacity="0.88" />
+      <circle cx="340" cy="236" r="14" fill="${palette.bg}" />
+      <circle cx="372" cy="222" r="12" fill="${palette.leaf}" opacity="0.75" />
+      <circle cx="398" cy="238" r="10" fill="${palette.deep}" opacity="0.14" />
+    </g>
+  `;
+}
+
+function createProductImage(product) {
+  const palette = productPalette(product);
+  const lines = splitLabel(product.name);
+  const categoryLabel = escapeSvg(CATEGORY_META[product.category].labelEs);
+  const lineOne = escapeSvg(lines[0] || product.name);
+  const lineTwo = escapeSvg(lines[1] || product.lineEs);
+
+  const artwork =
+    product.category === "bundles"
+      ? bundleArtwork(palette)
+      : product.category === "granolas"
+        ? granolaArtwork(palette)
+        : product.category === "spreads"
+          ? spreadArtwork(palette)
+          : product.category === "pancakes"
+            ? pancakeArtwork(palette)
+            : pantryArtwork(palette);
+
+  return svgDataUri(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-label="${escapeSvg(product.name)}">
+      <defs>
+        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="${palette.bgSoft}" />
+          <stop offset="100%" stop-color="${palette.bg}" />
+        </linearGradient>
+        <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="${palette.accent}" />
+          <stop offset="100%" stop-color="${palette.leaf}" />
+        </linearGradient>
+      </defs>
+      <rect width="640" height="640" rx="42" fill="url(#bg)" />
+      <circle cx="104" cy="102" r="52" fill="${palette.accent}" opacity="0.10" />
+      <circle cx="534" cy="94" r="70" fill="${palette.leaf}" opacity="0.12" />
+      <circle cx="550" cy="516" r="86" fill="${palette.accent}" opacity="0.08" />
+      <rect x="56" y="54" width="528" height="66" rx="22" fill="white" fill-opacity="0.70" />
+      <rect x="56" y="474" width="528" height="120" rx="30" fill="white" fill-opacity="0.82" />
+      <rect x="76" y="74" width="164" height="26" rx="13" fill="url(#ribbon)" />
+      <text x="86" y="91" fill="${palette.deep}" font-family="Space Grotesk, Arial, sans-serif" font-size="22" font-weight="700">${categoryLabel}</text>
+      ${artwork}
+      <text x="86" y="532" fill="${palette.deep}" font-family="Space Grotesk, Arial, sans-serif" font-size="42" font-weight="700">${lineOne}</text>
+      <text x="86" y="572" fill="${palette.deep}" font-family="Space Grotesk, Arial, sans-serif" font-size="30" font-weight="500" opacity="0.78">${lineTwo}</text>
+    </svg>
+  `);
+}
+
+const PRODUCTS = PRODUCT_SEED.map((product) => ({
+  ...product,
+  image: createProductImage(product),
+}));
+
+const PRODUCT_MAP = new Map(PRODUCTS.map((product) => [product.slug, product]));
+
+function currentCart() {
+  const fallback = {};
+  const raw = localStorage.getItem(STORAGE_KEYS.cartItems);
+  if (!raw) return fallback;
+
+  try {
+    const parsed = JSON.parse(raw);
+    return Object.entries(parsed).reduce((accumulator, [slug, quantity]) => {
+      const normalized = Math.max(0, Math.round(Number(quantity) || 0));
+      if (normalized > 0 && PRODUCT_MAP.has(slug)) {
+        accumulator[slug] = normalized;
+      }
+      return accumulator;
+    }, {});
+  } catch {
+    return fallback;
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(STORAGE_KEYS.cartItems, JSON.stringify(cart));
+}
+
+function cartEntries(cart = currentCart()) {
+  return Object.entries(cart)
+    .map(([slug, quantity]) => {
+      const product = PRODUCT_MAP.get(slug);
+      if (!product || quantity < 1) return null;
+      return { product, quantity };
+    })
+    .filter(Boolean);
+}
+
+function cartCount(cart = currentCart()) {
+  return Object.values(cart).reduce((sum, quantity) => sum + quantity, 0);
+}
+
+function cartSubtotal(entries = cartEntries()) {
+  return entries.reduce((sum, entry) => sum + entry.product.price * entry.quantity, 0);
+}
+
+function setCartQuantity(slug, quantity) {
+  const cart = currentCart();
+  const normalized = Math.max(0, Math.round(quantity || 0));
+
+  if (normalized === 0) {
+    delete cart[slug];
+  } else {
+    cart[slug] = normalized;
+  }
+
+  saveCart(cart);
+  syncCartUI();
+}
+
+function addToCart(slug, quantity = 1) {
+  const product = PRODUCT_MAP.get(slug);
+  if (!product) return;
+
+  const cart = currentCart();
+  cart[slug] = (cart[slug] || 0) + quantity;
+  saveCart(cart);
+  syncCartUI();
+
+  const lang = currentLanguage();
+  showToast(
+    lang === "es"
+      ? `${product.name} se agrego al carrito.`
+      : `${product.name} was added to your cart.`,
+  );
+}
+
+function cartWhatsappLink(entries, lang) {
+  const lines = entries.map(
+    (entry) =>
+      `- ${entry.product.name} x${entry.quantity} (${formatCurrency(entry.product.price * entry.quantity)})`,
+  );
+
+  const header = lang === "es" ? "Hola, quiero pedir:" : "Hi, I would like to order:";
+  const footer =
+    lang === "es"
+      ? `Subtotal estimado: ${formatCurrency(cartSubtotal(entries))}`
+      : `Estimated subtotal: ${formatCurrency(cartSubtotal(entries))}`;
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent([header, ...lines, "", footer].join("\n"))}`;
+}
+
 function injectShell() {
   const body = document.body;
   const page = pageForNavigation(body.dataset.page || "home");
@@ -495,12 +747,12 @@ function injectShell() {
       <header class="site-header">
         <div class="container topbar">
           <div>${bilingualText(
-            "<strong>Despensa saludable:</strong> surtido claro, bundles visibles y decisión rápida.",
-            "<strong>Healthy pantry:</strong> clear assortment, visible bundles and faster decisions.",
+            `<strong>Envio gratis</strong> desde ${formatCurrency(FREE_SHIPPING_THRESHOLD)} en compras nacionales.`,
+            `<strong>Free shipping</strong> over ${formatCurrency(FREE_SHIPPING_THRESHOLD)} on nationwide orders.`,
           )}</div>
           <div>${bilingualText(
-            "Envío gratis desde COP 160.000. Checkout demostrativo con enfoque mobile first.",
-            "Free shipping over COP 160,000. Demo checkout with a mobile-first mindset.",
+            "Atencion directa por WhatsApp para resolver pedidos, envios y disponibilidad.",
+            "Direct WhatsApp support for orders, shipping and availability.",
           )}</div>
         </div>
         <div class="container nav-row">
@@ -510,8 +762,8 @@ function injectShell() {
               <span class="brand-name">Savia Col.</span>
               <span class="brand-tag">
                 ${bilingualText(
-                  "Despensa saludable con criterio visual",
-                  "Healthy pantry with strong visual curation",
+                  "Granolas, mezclas y basicos para tu rutina",
+                  "Granolas, mixes and staples for your daily routine",
                 )}
               </span>
             </span>
@@ -522,16 +774,16 @@ function injectShell() {
               ${bilingualText("Inicio", "Home")}
             </a>
             <a class="nav-link ${page === "catalogo" ? "is-active" : ""}" href="${catalogHref}">
-              ${bilingualText("Catálogo", "Catalog")}
+              ${bilingualText("Catalogo", "Catalog")}
             </a>
             <a class="nav-link ${page === "envios" ? "is-active" : ""}" href="${shippingHref}">
-              ${bilingualText("Envíos", "Shipping")}
+              ${bilingualText("Envios", "Shipping")}
             </a>
             <a class="nav-link ${page === "privacidad" ? "is-active" : ""}" href="${privacyHref}">
               ${bilingualText("Privacidad", "Privacy")}
             </a>
             <a class="nav-link ${page === "terminos" ? "is-active" : ""}" href="${termsHref}">
-              ${bilingualText("Términos", "Terms")}
+              ${bilingualText("Terminos", "Terms")}
             </a>
           </nav>
 
@@ -540,16 +792,67 @@ function injectShell() {
               <button type="button" data-lang-trigger="es">ES</button>
               <button type="button" data-lang-trigger="en">EN</button>
             </div>
-            <button class="cart-pill" type="button" aria-label="Carrito demostrativo">
+            <button class="cart-pill" type="button" data-open-cart aria-label="Abrir carrito">
               ${bilingualText("Carrito", "Cart")}
               <span class="cart-count" data-cart-count>0</span>
             </button>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
-              ${bilingualText("Menú", "Menu")}
+              ${bilingualText("Menu", "Menu")}
             </button>
           </div>
         </div>
       </header>
+
+      <div class="cart-overlay" data-cart-overlay></div>
+
+      <aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+        <div class="cart-drawer-head">
+          <div>
+            <p class="kicker">${bilingualText("Tu pedido", "Your order")}</p>
+            <h2>${bilingualText("Resumen del carrito", "Cart summary")}</h2>
+          </div>
+          <button class="cart-close" type="button" data-close-cart aria-label="Cerrar carrito">×</button>
+        </div>
+
+        <div class="cart-drawer-body">
+          <div class="cart-empty" data-cart-empty>
+            <p>${bilingualText(
+              "Todavia no agregas productos. Explora el catalogo y arma tu pedido.",
+              "You have not added products yet. Browse the catalog and build your order.",
+            )}</p>
+          </div>
+          <div class="cart-items" data-cart-items></div>
+        </div>
+
+        <div class="cart-drawer-foot">
+          <div class="cart-progress">
+            <div class="cart-progress-track">
+              <span data-cart-progress-fill></span>
+            </div>
+            <p class="muted" data-cart-progress-text></p>
+          </div>
+
+          <div class="cart-summary-row">
+            <span>${bilingualText("Subtotal", "Subtotal")}</span>
+            <strong data-cart-subtotal>${formatCurrency(0)}</strong>
+          </div>
+
+          <div class="cart-actions">
+            <a
+              class="btn btn-primary"
+              data-cart-checkout
+              href="${catalogHref}"
+              target="_blank"
+              rel="noreferrer"
+            >
+              ${bilingualText("Explorar catalogo", "Browse catalog")}
+            </a>
+            <button class="btn btn-secondary" type="button" data-cart-clear>
+              ${bilingualText("Vaciar carrito", "Clear cart")}
+            </button>
+          </div>
+        </div>
+      </aside>
     `;
   }
 
@@ -563,8 +866,8 @@ function injectShell() {
               <strong class="brand-name">Savia Col.</strong>
               <p class="muted">
                 ${bilingualText(
-                  "Prototipo académico de e-commerce enfocado en productos naturales, navegación clara y mejor lectura visual en desktop y mobile.",
-                  "Academic e-commerce prototype focused on natural products, clear navigation and stronger readability on desktop and mobile.",
+                  "Sabores pensados para desayunos faciles, snacks amables y una despensa que acompana la semana.",
+                  "Flavors designed for easy breakfasts, gentle snacks and a pantry that supports the whole week.",
                 )}
               </p>
             </div>
@@ -572,40 +875,31 @@ function injectShell() {
 
           <section class="footer-links">
             <strong>${bilingualText("Colecciones", "Collections")}</strong>
-            <a href="${fromRoot("pages/catalogo.html?category=granolas")}">${bilingualText("GranOLAS", "Granolas")}</a>
-            <a href="${fromRoot("pages/catalogo.html?category=pancakes")}">${bilingualText(
-              "Pancakes & Waffles",
-              "Pancakes & Waffles",
-            )}</a>
-            <a href="${fromRoot("pages/catalogo.html?category=spreads")}">${bilingualText("Esparcibles", "Spreads")}</a>
-            <a href="${fromRoot("pages/catalogo.html?category=bundles")}">${bilingualText("Combos", "Bundles")}</a>
+            <a href="${fromRoot("pages/catalogo.html?category=granolas")}">${bilingualText("Granolas", "Granolas")}</a>
+            <a href="${fromRoot("pages/catalogo.html?category=pancakes")}">${bilingualText("Pancakes y waffles", "Pancakes and waffles")}</a>
+            <a href="${fromRoot("pages/catalogo.html?category=spreads")}">${bilingualText("Cremas", "Spreads")}</a>
+            <a href="${fromRoot("pages/catalogo.html?category=pantry")}">${bilingualText("Despensa", "Pantry")}</a>
           </section>
 
           <section class="footer-links">
-            <strong>${bilingualText("Compra segura", "Safe shopping")}</strong>
-            <a href="${shippingHref}">${bilingualText("Envíos y devoluciones", "Shipping and returns")}</a>
-            <a href="${privacyHref}">${bilingualText("Política de privacidad", "Privacy policy")}</a>
-            <a href="${termsHref}">${bilingualText("Términos y condiciones", "Terms and conditions")}</a>
+            <strong>${bilingualText("Ayuda", "Help")}</strong>
+            <a href="${shippingHref}">${bilingualText("Envios y devoluciones", "Shipping and returns")}</a>
+            <a href="${privacyHref}">${bilingualText("Politica de privacidad", "Privacy policy")}</a>
+            <a href="${termsHref}">${bilingualText("Terminos y condiciones", "Terms and conditions")}</a>
           </section>
 
           <section class="footer-notes">
-            <strong>${bilingualText("Canales", "Channels")}</strong>
+            <strong>${bilingualText("Contacto", "Contact")}</strong>
             <span>hola@saviacol.co</span>
             <span>+57 310 817 9620</span>
             <span>${bilingualText("Pasto, Colombia", "Pasto, Colombia")}</span>
-            <span>${bilingualText("Pagos: Tarjeta, PSE, Mercado Pago", "Payments: Cards, PSE, Mercado Pago")}</span>
+            <span>${bilingualText("Pagos: tarjeta, PSE, Mercado Pago y transferencia", "Payments: cards, PSE, Mercado Pago and transfer")}</span>
           </section>
         </div>
 
         <div class="container footer-legal">
-          <span>${bilingualText(
-            "Surtido tomado del catálogo de referencia suministrado para esta actividad.",
-            "Assortment curated from the reference catalog supplied for this assignment.",
-          )}</span>
-          <span>${bilingualText(
-            "Sitio demostrativo sin checkout real ni procesamiento de pagos.",
-            "Demonstration site without real checkout or payment processing.",
-          )}</span>
+          <span>${bilingualText("Precios expresados en COP y sujetos a disponibilidad.", "Prices shown in COP and subject to availability.")}</span>
+          <span>${bilingualText("Atencion de lunes a sabado por WhatsApp y correo.", "Support available Monday to Saturday via WhatsApp and email.")}</span>
         </div>
       </footer>
     `;
@@ -651,6 +945,7 @@ function bindLanguage() {
       const nextLang = button.dataset.langTrigger;
       localStorage.setItem(STORAGE_KEYS.language, nextLang);
       applyLanguage(nextLang);
+      syncCartUI();
     });
   });
 }
@@ -676,21 +971,155 @@ function showToast(message) {
   }, 2200);
 }
 
-function bindCart() {
-  setCartCount(currentCartCount());
+function openCart() {
+  document.body.classList.add("cart-open");
+  const drawer = document.querySelector("[data-cart-drawer]");
+  if (drawer) drawer.setAttribute("aria-hidden", "false");
+}
 
-  document.querySelectorAll(".add-to-cart").forEach((button) => {
-    button.addEventListener("click", () => {
-      const lang = currentLanguage();
-      const count = currentCartCount() + 1;
-      setCartCount(count);
-      const product = lang === "es" ? button.dataset.productEs : button.dataset.productEn;
-      const message =
-        lang === "es"
-          ? `${product} se añadió al carrito demostrativo.`
-          : `${product} was added to the demo cart.`;
-      showToast(message);
-    });
+function closeCart() {
+  document.body.classList.remove("cart-open");
+  const drawer = document.querySelector("[data-cart-drawer]");
+  if (drawer) drawer.setAttribute("aria-hidden", "true");
+}
+
+function syncCartUI() {
+  const lang = currentLanguage();
+  const cart = currentCart();
+  const entries = cartEntries(cart);
+  const totalItems = cartCount(cart);
+  const subtotal = cartSubtotal(entries);
+  const remaining = Math.max(FREE_SHIPPING_THRESHOLD - subtotal, 0);
+  const progress = subtotal === 0 ? 0 : Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100));
+
+  document.querySelectorAll("[data-cart-count]").forEach((node) => {
+    node.textContent = String(totalItems);
+  });
+
+  const itemsHost = document.querySelector("[data-cart-items]");
+  if (itemsHost) {
+    itemsHost.innerHTML = entries
+      .map(
+        (entry) => `
+          <article class="cart-item">
+            <div class="cart-item-media">
+              <img src="${entry.product.image}" alt="${escapeHtml(entry.product.name)}" loading="lazy" />
+            </div>
+            <div class="cart-item-copy">
+              <strong>${escapeHtml(entry.product.name)}</strong>
+              <span>${bilingualText(entry.product.lineEs, entry.product.lineEn)}</span>
+              <span>${formatCurrency(entry.product.price)}</span>
+            </div>
+            <div class="cart-item-side">
+              <div class="cart-stepper">
+                <button type="button" data-cart-qty="-1" data-slug="${entry.product.slug}" aria-label="Restar">-</button>
+                <span>${entry.quantity}</span>
+                <button type="button" data-cart-qty="1" data-slug="${entry.product.slug}" aria-label="Sumar">+</button>
+              </div>
+              <strong>${formatCurrency(entry.product.price * entry.quantity)}</strong>
+              <button class="cart-remove" type="button" data-remove-cart-item data-slug="${entry.product.slug}">
+                ${bilingualText("Quitar", "Remove")}
+              </button>
+            </div>
+          </article>
+        `,
+      )
+      .join("");
+  }
+
+  const emptyState = document.querySelector("[data-cart-empty]");
+  if (emptyState) {
+    emptyState.classList.toggle("is-visible", entries.length === 0);
+  }
+
+  const subtotalNode = document.querySelector("[data-cart-subtotal]");
+  if (subtotalNode) {
+    subtotalNode.textContent = formatCurrency(subtotal);
+  }
+
+  const progressFill = document.querySelector("[data-cart-progress-fill]");
+  if (progressFill) {
+    progressFill.style.width = `${progress}%`;
+  }
+
+  const progressText = document.querySelector("[data-cart-progress-text]");
+  if (progressText) {
+    progressText.innerHTML =
+      subtotal >= FREE_SHIPPING_THRESHOLD
+        ? bilingualText(
+            "Tu pedido ya tiene envio gratis.",
+            "Your order already qualifies for free shipping.",
+          )
+        : bilingualText(
+            `Te faltan ${formatCurrency(remaining)} para obtener envio gratis.`,
+            `Add ${formatCurrency(remaining)} more to unlock free shipping.`,
+          );
+  }
+
+  const checkoutLink = document.querySelector("[data-cart-checkout]");
+  if (checkoutLink) {
+    if (entries.length === 0) {
+      checkoutLink.href = fromRoot("pages/catalogo.html");
+      checkoutLink.innerHTML = bilingualText("Explorar catalogo", "Browse catalog");
+    } else {
+      checkoutLink.href = cartWhatsappLink(entries, lang);
+      checkoutLink.innerHTML = bilingualText("Pedir por WhatsApp", "Order on WhatsApp");
+    }
+  }
+}
+
+function bindCart() {
+  syncCartUI();
+
+  document.addEventListener("click", (event) => {
+    const addButton = event.target.closest(".add-to-cart");
+    if (addButton) {
+      event.preventDefault();
+      addToCart(addButton.dataset.slug);
+      return;
+    }
+
+    if (event.target.closest("[data-open-cart]")) {
+      event.preventDefault();
+      openCart();
+      return;
+    }
+
+    if (event.target.closest("[data-close-cart]") || event.target.closest("[data-cart-overlay]")) {
+      event.preventDefault();
+      closeCart();
+      return;
+    }
+
+    const quantityButton = event.target.closest("[data-cart-qty]");
+    if (quantityButton) {
+      event.preventDefault();
+      const slug = quantityButton.dataset.slug;
+      const delta = Number(quantityButton.dataset.cartQty || 0);
+      const cart = currentCart();
+      setCartQuantity(slug, (cart[slug] || 0) + delta);
+      return;
+    }
+
+    const removeButton = event.target.closest("[data-remove-cart-item]");
+    if (removeButton) {
+      event.preventDefault();
+      setCartQuantity(removeButton.dataset.slug, 0);
+      return;
+    }
+
+    if (event.target.closest("[data-cart-clear]")) {
+      event.preventDefault();
+      saveCart({});
+      syncCartUI();
+      return;
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.body.classList.contains("cart-open")) {
+      closeCart();
+    }
   });
 }
 
@@ -719,20 +1148,24 @@ function productCardTemplate(product) {
     product.familyEn,
     product.flavorEs,
     product.flavorEn,
+    product.baseEs,
+    product.baseEn,
+    product.tagsEs.join(" "),
+    product.tagsEn.join(" "),
   ]
     .join(" ")
     .toLowerCase();
 
   return `
-    <article class="product-card catalog-card tone-${product.tone}" data-category="${product.category}" data-search="${searchTokens}">
+    <article class="product-card catalog-card tone-${product.tone}" data-category="${product.category}" data-search="${escapeHtml(searchTokens)}">
       <div class="product-media">
-        <img src="${product.image}" alt="${product.name}" loading="lazy" />
+        <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy" />
         <span class="product-badge">${bilingualText(product.familyEs, product.familyEn)}</span>
         ${discount ? `<span class="sale-pill">-${discount}%</span>` : ""}
       </div>
       <div class="product-copy">
         <p class="product-line">${bilingualText(product.lineEs, product.lineEn)}</p>
-        <h3>${product.name}</h3>
+        <h3>${escapeHtml(product.name)}</h3>
         <p class="muted">${bilingualText(product.descriptionEs, product.descriptionEn)}</p>
         <div class="tag-row">
           ${product.tagsEs
@@ -746,13 +1179,8 @@ function productCardTemplate(product) {
           </div>
           <div class="button-row">
             <a class="btn btn-secondary" href="${productHref(product)}">${bilingualText("Ver detalle", "View details")}</a>
-            <button
-              class="btn btn-primary add-to-cart"
-              type="button"
-              data-product-es="${product.name}"
-              data-product-en="${product.name}"
-            >
-              ${bilingualText("Añadir", "Add")}
+            <button class="btn btn-primary add-to-cart" type="button" data-slug="${product.slug}">
+              ${bilingualText("Agregar", "Add")}
             </button>
           </div>
         </div>
@@ -762,58 +1190,83 @@ function productCardTemplate(product) {
 }
 
 function renderHome() {
+  const heroTarget = document.querySelector("#home-hero-product");
   const bestsellers = document.querySelector("#home-bestsellers");
   const bundles = document.querySelector("#home-bundles");
   const spotlight = document.querySelector("#home-spotlight");
 
+  if (heroTarget) {
+    const featuredHero = PRODUCT_MAP.get("back-to-routine");
+    if (featuredHero) {
+      heroTarget.innerHTML = `
+        <article class="showcase-main">
+          <img src="${featuredHero.image}" alt="${escapeHtml(featuredHero.name)}" loading="lazy" />
+          <div class="showcase-copy">
+            <strong>${escapeHtml(featuredHero.name)}</strong>
+            <p class="muted">${bilingualText(featuredHero.descriptionEs, featuredHero.descriptionEn)}</p>
+            <div class="button-row">
+              <a class="btn btn-primary" href="${productHref(featuredHero)}">${bilingualText("Ver combo", "View bundle")}</a>
+              <button class="btn btn-secondary add-to-cart" type="button" data-slug="${featuredHero.slug}">
+                ${bilingualText("Agregar al carrito", "Add to cart")}
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+  }
+
   if (bestsellers) {
     const featured = ["granola-pistacho", "spread-chocolate-cremoso-xl", "pancake-vainilla-xl", "avena-hojuelas-xl"]
-      .map((slug) => PRODUCTS.find((product) => product.slug === slug))
+      .map((slug) => PRODUCT_MAP.get(slug))
       .filter(Boolean);
     bestsellers.innerHTML = featured.map((product) => productCardTemplate(product)).join("");
   }
 
   if (bundles) {
-    const curatedBundles = PRODUCTS.filter((product) => product.category === "bundles");
-    bundles.innerHTML = curatedBundles.map((product) => productCardTemplate(product)).join("");
+    bundles.innerHTML = PRODUCTS.filter((product) => product.category === "bundles")
+      .map((product) => productCardTemplate(product))
+      .join("");
   }
 
   if (spotlight) {
-    const heroProduct = PRODUCTS.find((product) => product.slug === "back-to-routine");
-    if (heroProduct) {
+    const spotlightProduct = PRODUCT_MAP.get("spread-chocolate-cremoso-xl");
+    if (spotlightProduct) {
       spotlight.innerHTML = `
-        <article class="spotlight-panel tone-${heroProduct.tone}">
+        <article class="spotlight-panel tone-${spotlightProduct.tone}">
           <div class="spotlight-copy">
-            <p class="kicker">${bilingualText("Spotlight comercial", "Commercial spotlight")}</p>
-            <h2>${bilingualText("Un bundle héroe para elevar la percepción del catálogo.", "A hero bundle to elevate catalog perception.")}</h2>
+            <p class="kicker">${bilingualText("Favorito de la despensa", "Pantry favorite")}</p>
+            <h2>${bilingualText(
+              "Una crema suave para tostadas, fruta y pancakes.",
+              "A silky spread for toast, fruit and pancakes.",
+            )}</h2>
             <p class="section-copy">${bilingualText(
-              "Back To Routine ordena la navegación: mezcla, spread, GranOLA y accesorio en una sola historia visual. Esto mejora la lectura de valor y hace que la página no dependa solo de productos unitarios.",
-              "Back To Routine organizes navigation: mix, spread, GranOLA and accessory in one visual story. That improves value perception and keeps the page from depending only on single-SKU products.",
+              "Cacao y Avellana es de esos productos que resuelven desayuno, media tarde y antojo con el mismo frasco.",
+              "Cacao y Avellana is the kind of jar that solves breakfast, snack time and sweet cravings alike.",
             )}</p>
             <div class="stat-strip">
               <div class="stat-card">
-                <strong>${formatCurrency(heroProduct.price)}</strong>
+                <strong>${formatCurrency(spotlightProduct.price)}</strong>
                 <span>${bilingualText("Precio actual", "Current price")}</span>
               </div>
               <div class="stat-card">
-                <strong>${formatCurrency(heroProduct.oldPrice || heroProduct.price)}</strong>
-                <span>${bilingualText("Antes", "Before")}</span>
+                <strong>${bilingualText(spotlightProduct.size, spotlightProduct.size)}</strong>
+                <span>${bilingualText("Presentacion", "Format")}</span>
               </div>
               <div class="stat-card">
-                <strong>${bilingualText("Alta", "High")}</strong>
-                <span>${bilingualText("Percepción de regalo", "Gift perception")}</span>
+                <strong>${bilingualText("Muy facil", "Very easy")}</strong>
+                <span>${bilingualText("De combinar", "To pair")}</span>
               </div>
             </div>
             <div class="cta-row">
-              <a class="btn btn-primary" href="${productHref(heroProduct)}">${bilingualText("Abrir combo", "Open bundle")}</a>
-              <a class="btn btn-secondary" href="${fromRoot("pages/catalogo.html?category=bundles")}">${bilingualText(
-                "Ver todos los combos",
-                "Browse all bundles",
-              )}</a>
+              <a class="btn btn-primary" href="${productHref(spotlightProduct)}">${bilingualText("Ver producto", "View product")}</a>
+              <button class="btn btn-secondary add-to-cart" type="button" data-slug="${spotlightProduct.slug}">
+                ${bilingualText("Sumar al carrito", "Add to cart")}
+              </button>
             </div>
           </div>
           <div class="spotlight-media">
-            <img src="${heroProduct.image}" alt="${heroProduct.name}" loading="lazy" />
+            <img src="${spotlightProduct.image}" alt="${escapeHtml(spotlightProduct.name)}" loading="lazy" />
           </div>
         </article>
       `;
@@ -830,22 +1283,22 @@ function renderCatalog() {
 function buildProductInfoCards(product) {
   return [
     {
-      titleEs: "Familia de compra",
-      titleEn: "Shopping family",
-      bodyEs: `${product.familyEs}. ${product.lineEs}.`,
-      bodyEn: `${product.familyEn}. ${product.lineEn}.`,
+      titleEs: "Sabor",
+      titleEn: "Flavor",
+      bodyEs: product.flavorEs,
+      bodyEn: product.flavorEn,
     },
     {
-      titleEs: "Mejor momento de uso",
-      titleEn: "Best use moment",
+      titleEs: "Base",
+      titleEn: "Base",
+      bodyEs: product.baseEs,
+      bodyEn: product.baseEn,
+    },
+    {
+      titleEs: "Ideal para",
+      titleEn: "Great for",
       bodyEs: product.useEs,
       bodyEn: product.useEn,
-    },
-    {
-      titleEs: "Compra segura",
-      titleEn: "Safe shopping",
-      bodyEs: "Tarjeta, PSE, Mercado Pago y cambios por empaque reportados dentro de 7 días.",
-      bodyEn: "Cards, PSE, Mercado Pago and packaging-related replacements reported within 7 days.",
     },
   ];
 }
@@ -853,35 +1306,35 @@ function buildProductInfoCards(product) {
 function buildProductExtraCards(product) {
   return [
     {
-      titleEs: "Qué recibes",
+      titleEs: "Lo que recibes",
       titleEn: "What you get",
       itemsEs: [
         `${product.size}.`,
         `${product.baseEs}.`,
-        `${product.flavorEs}.`,
-        `Categoría: ${CATEGORY_META[product.category].labelEs}.`,
+        `${CATEGORY_META[product.category].labelEs}.`,
+        `${product.tagsEs[0]}.`,
       ],
       itemsEn: [
         `${product.size}.`,
         `${product.baseEn}.`,
-        `${product.flavorEn}.`,
-        `Category: ${CATEGORY_META[product.category].labelEn}.`,
+        `${CATEGORY_META[product.category].labelEn}.`,
+        `${product.tagsEn[0]}.`,
       ],
     },
     {
-      titleEs: "Antes de comprar",
-      titleEn: "Before you buy",
+      titleEs: "Compra y entrega",
+      titleEn: "Buying and delivery",
       itemsEs: [
-        "Envío gratis desde COP 160.000.",
-        "Tarifas nacionales visibles antes del checkout.",
-        "La página funciona como demo: carrito ilustrativo y fichas informativas.",
-        "Ideal para navegación mobile y decisión rápida.",
+        `Envio gratis desde ${formatCurrency(FREE_SHIPPING_THRESHOLD)}.`,
+        "Pagos por tarjeta, PSE, Mercado Pago o transferencia.",
+        "Atencion por WhatsApp para confirmar tu pedido.",
+        "Disponibilidad sujeta a inventario.",
       ],
       itemsEn: [
-        "Free shipping over COP 160,000.",
-        "National shipping rates are visible before checkout.",
-        "This page works as a demo: illustrative cart and informative product sheets.",
-        "Built for mobile navigation and faster decision-making.",
+        `Free shipping over ${formatCurrency(FREE_SHIPPING_THRESHOLD)}.`,
+        "Payments by card, PSE, Mercado Pago or bank transfer.",
+        "WhatsApp support to confirm your order.",
+        "Availability is subject to stock.",
       ],
     },
   ];
@@ -890,7 +1343,7 @@ function buildProductExtraCards(product) {
 function renderProductPage() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("slug") || "granola-pistacho";
-  const product = PRODUCTS.find((item) => item.slug === slug) || PRODUCTS[0];
+  const product = PRODUCT_MAP.get(slug) || PRODUCTS[0];
   const shell = document.querySelector("#product-shell");
   const benefits = document.querySelector("#product-benefits");
   const extra = document.querySelector("#product-extra");
@@ -900,29 +1353,26 @@ function renderProductPage() {
 
   document.body.dataset.titleEs = `${product.name} | Savia Col.`;
   document.body.dataset.titleEn = `${product.name} | Savia Col.`;
-  document.body.dataset.descEs = `${product.familyEs}, ${product.flavorEs.toLowerCase()} y precio ${formatCurrency(product.price)}.`;
-  document.body.dataset.descEn = `${product.familyEn}, ${product.flavorEn.toLowerCase()} and price ${formatCurrency(product.price)}.`;
+  document.body.dataset.descEs = `${product.name}, ${product.flavorEs.toLowerCase()} y precio ${formatCurrency(product.price)}.`;
+  document.body.dataset.descEn = `${product.name}, ${product.flavorEn.toLowerCase()} and price ${formatCurrency(product.price)}.`;
 
   const discount = discountPercent(product.oldPrice, product.price);
   shell.innerHTML = `
     <section class="product-shell surface-panel tone-${product.tone}">
       <div class="product-gallery">
         <div class="product-visual">
-          <img src="${product.image}" alt="${product.name}" />
+          <img src="${product.image}" alt="${escapeHtml(product.name)}" />
         </div>
         <div class="product-meta-strip">
           <span class="tag">${bilingualText(product.size, product.size)}</span>
           <span class="tag">${bilingualText(CATEGORY_META[product.category].labelEs, CATEGORY_META[product.category].labelEn)}</span>
-          <span class="tag">${bilingualText("Mobile friendly", "Mobile friendly")}</span>
+          <span class="tag">${bilingualText("Envio nacional", "Nationwide shipping")}</span>
         </div>
       </div>
       <article class="product-summary">
-        <p class="kicker">${bilingualText("Ficha de producto", "Product detail")}</p>
-        <h1 class="page-title">${product.name}</h1>
-        <p class="product-line product-line-large">${bilingualText(product.familyEs, product.familyEn)} · ${bilingualText(
-          product.lineEs,
-          product.lineEn,
-        )}</p>
+        <p class="kicker">${bilingualText(product.familyEs, product.familyEn)}</p>
+        <h1 class="page-title">${escapeHtml(product.name)}</h1>
+        <p class="product-line product-line-large">${bilingualText(product.lineEs, product.lineEn)}</p>
         <p class="page-intro">${bilingualText(product.descriptionEs, product.descriptionEn)}</p>
 
         <div class="tag-row">
@@ -936,30 +1386,25 @@ function renderProductPage() {
             ${product.oldPrice ? `<span class="price-old">${formatCurrency(product.oldPrice)}</span>` : ""}
             <strong class="price">${formatCurrency(product.price)}</strong>
           </div>
-          ${discount ? `<span class="pill-note">${bilingualText(`Ahorras ${discount}%`, `You save ${discount}%`)}</span>` : ""}
+          ${discount ? `<span class="pill-note">${bilingualText(`Ahorra ${discount}%`, `Save ${discount}%`)}</span>` : ""}
         </div>
 
         <div class="button-row">
-          <button
-            class="btn btn-primary add-to-cart"
-            type="button"
-            data-product-es="${product.name}"
-            data-product-en="${product.name}"
-          >
-            ${bilingualText("Añadir al carrito", "Add to cart")}
+          <button class="btn btn-primary add-to-cart" type="button" data-slug="${product.slug}">
+            ${bilingualText("Agregar al carrito", "Add to cart")}
           </button>
           <a class="btn btn-secondary" href="${fromRoot("pages/catalogo.html")}">${bilingualText(
-            "Volver al catálogo",
+            "Volver al catalogo",
             "Back to catalog",
           )}</a>
         </div>
 
         <ul class="micro-list">
           <li>${bilingualText(`Sabor: ${product.flavorEs}.`, `Flavor: ${product.flavorEn}.`)}</li>
-          <li>${bilingualText(`Base: ${product.baseEs}.`, `Base: ${product.baseEn}.`)}</li>
+          <li>${bilingualText(`Ideal para: ${product.useEs}`, `Great for: ${product.useEn}`)}</li>
           <li>${bilingualText(
-            "Pagos visibles: tarjeta, PSE y Mercado Pago.",
-            "Visible payments: cards, PSE and Mercado Pago.",
+            `Envio gratis desde ${formatCurrency(FREE_SHIPPING_THRESHOLD)}.`,
+            `Free shipping over ${formatCurrency(FREE_SHIPPING_THRESHOLD)}.`,
           )}</li>
         </ul>
       </article>
@@ -1052,8 +1497,8 @@ function bindCatalogControls() {
     });
 
     count.innerHTML = bilingualText(
-      `${visibleCount} productos listos para explorar`,
-      `${visibleCount} products ready to browse`,
+      `${visibleCount} productos encontrados`,
+      `${visibleCount} products found`,
     );
     empty.classList.toggle("is-visible", visibleCount === 0);
     updateCatalogUrl(state);
@@ -1074,22 +1519,6 @@ function bindCatalogControls() {
   render();
 }
 
-function bindReportDownloadNotice() {
-  const downloadLinks = document.querySelectorAll("[data-download-note]");
-  if (!downloadLinks.length) return;
-
-  downloadLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      const lang = currentLanguage();
-      showToast(
-        lang === "es"
-          ? "Se abrirá el dataset ficticio en formato CSV."
-          : "The fictional dataset will open in CSV format.",
-      );
-    });
-  });
-}
-
 function renderDynamicContent() {
   const page = document.body.dataset.page;
 
@@ -1105,5 +1534,4 @@ document.addEventListener("DOMContentLoaded", () => {
   bindLanguage();
   bindCart();
   bindCatalogControls();
-  bindReportDownloadNotice();
 });
