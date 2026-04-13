@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Catálogo | Savia Col.</title>
+    <meta
+      name="description"
+      content="Catálogo Savia Col. con granolas, pancakes, spreads, pantry staples y bundles. Incluye búsqueda, filtros y fichas más comerciales."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script src="../assets/js/main.js" defer></script>
+  </head>
+  <body
+    data-page="catalogo"
+    data-root=".."
+    data-language="es"
+    data-title-es="Catálogo | Savia Col."
+    data-title-en="Catalog | Savia Col."
+    data-desc-es="Catálogo Savia Col. con granolas, pancakes, spreads, pantry staples y bundles. Incluye búsqueda, filtros y fichas más comerciales."
+    data-desc-en="Savia Col. catalog with granolas, pancakes, spreads, pantry staples and bundles. Includes search, filters and more commercial product sheets."
+  >
+    <div id="site-header"></div>
+
+    <main id="contenido-principal" class="page">
+      <section class="container catalog-hero surface-panel">
+        <div>
+          <p class="kicker">
+            <span class="lang-es">Catálogo completo</span>
+            <span class="lang-en">Full catalog</span>
+          </p>
+          <h1 class="page-title">
+            <span class="lang-es">Explora por familia, sabor o momento de consumo.</span>
+            <span class="lang-en">Browse by family, flavor or consumption moment.</span>
+          </h1>
+        </div>
+
+        <p class="page-intro">
+          <span class="lang-es">
+            El catálogo ahora tiene mejor jerarquía visual: cada tarjeta comunica categoría, sabor, precio y acción principal
+            sin que el usuario tenga que “descifrar” la interfaz. También mejora mucho en mobile con filtros deslizables.
+          </span>
+          <span class="lang-en">
+            The catalog now has stronger visual hierarchy: each card communicates category, flavor, price and primary action
+            without forcing the user to decode the interface. It also performs much better on mobile with scrollable filters.
+          </span>
+        </p>
+
+        <label class="search-shell">
+          <span class="search-label">
+            <span class="lang-es">Buscar en el surtido</span>
+            <span class="lang-en">Search the assortment</span>
+          </span>
+          <input
+            type="search"
+            data-search-input
+            data-placeholder-es="Busca por sabor, categoría o ocasión"
+            data-placeholder-en="Search by flavor, category or occasion"
+          />
+        </label>
+
+        <div class="filters">
+          <button class="filter-chip is-active" type="button" data-filter-trigger="all">
+            <span class="lang-es">Todos</span>
+            <span class="lang-en">All</span>
+          </button>
+          <button class="filter-chip" type="button" data-filter-trigger="granolas">
+            <span class="lang-es">GranOLAS</span>
+            <span class="lang-en">Granolas</span>
+          </button>
+          <button class="filter-chip" type="button" data-filter-trigger="pancakes">
+            <span class="lang-es">Pancakes &amp; Waffles</span>
+            <span class="lang-en">Pancakes &amp; Waffles</span>
+          </button>
+          <button class="filter-chip" type="button" data-filter-trigger="spreads">
+            <span class="lang-es">Esparcibles</span>
+            <span class="lang-en">Spreads</span>
+          </button>
+          <button class="filter-chip" type="button" data-filter-trigger="pantry">
+            <span class="lang-es">Avena &amp; Harinas</span>
+            <span class="lang-en">Oats &amp; Flours</span>
+          </button>
+          <button class="filter-chip" type="button" data-filter-trigger="bundles">
+            <span class="lang-es">Combos</span>
+            <span class="lang-en">Bundles</span>
+          </button>
+        </div>
+
+        <div class="results-bar">
+          <p id="catalog-count">
+            <span class="lang-es">0 productos listos para explorar</span>
+            <span class="lang-en">0 products ready to browse</span>
+          </p>
+          <p class="muted">
+            <span class="lang-es">El filtro trabaja en tiempo real y conserva una experiencia limpia en pantallas pequeñas.</span>
+            <span class="lang-en">Filtering works in real time and keeps a clean experience on small screens.</span>
+          </p>
+        </div>
+      </section>
+
+      <section class="container section">
+        <div id="catalog-empty" class="empty-state">
+          <span class="lang-es">No hay resultados con esa combinación. Prueba otra categoría o un término más corto.</span>
+          <span class="lang-en">There are no results for that combination. Try another category or a shorter term.</span>
+        </div>
+        <div id="catalog-grid" class="product-grid"></div>
+      </section>
+
+      <section class="container section">
+        <div class="info-grid">
+          <article class="card">
+            <p class="kicker">
+              <span class="lang-es">Cómo leer este catálogo</span>
+              <span class="lang-en">How to read this catalog</span>
+            </p>
+            <h2>
+              <span class="lang-es">Primero descubre, luego compara.</span>
+              <span class="lang-en">Discover first, compare second.</span>
+            </h2>
+            <ul class="list">
+              <li>
+                <span class="lang-es">Los tags resumen gramaje, uso y tipo de producto sin abrir la ficha.</span>
+                <span class="lang-en">Tags summarize size, use and product type without opening the product page.</span>
+              </li>
+              <li>
+                <span class="lang-es">Los badges ayudan a identificar familia y categoría más rápido.</span>
+                <span class="lang-en">Badges help identify product family and category faster.</span>
+              </li>
+              <li>
+                <span class="lang-es">Los combos quedaron visibles para mejorar percepción de valor y ticket promedio.</span>
+                <span class="lang-en">Bundles are more visible to improve value perception and average order value.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <p class="kicker">
+              <span class="lang-es">Compra segura</span>
+              <span class="lang-en">Safe shopping</span>
+            </p>
+            <h2>
+              <span class="lang-es">Lo esencial antes de agregar al carrito.</span>
+              <span class="lang-en">What matters before adding to cart.</span>
+            </h2>
+            <ul class="list">
+              <li>
+                <span class="lang-es">Pagos visibles: tarjeta, PSE, Mercado Pago y transferencia.</span>
+                <span class="lang-en">Visible payments: cards, PSE, Mercado Pago and bank transfer.</span>
+              </li>
+              <li>
+                <span class="lang-es">Envío gratis desde COP 160.000 y tarifas definidas por región.</span>
+                <span class="lang-en">Free shipping over COP 160,000 and region-based rates.</span>
+              </li>
+              <li>
+                <span class="lang-es">Cambios por empaque o error de despacho reportados en 7 días.</span>
+                <span class="lang-en">Packaging or shipping issue replacements reported within 7 days.</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <div class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Logotipo Bruma Alta</title>
+  <desc id="desc">Isotipo con montaña, sol y grano de cafe en tonos tierra y verdes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#17352c"/>
+      <stop offset="100%" stop-color="#2f5a49"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7b267"/>
+      <stop offset="100%" stop-color="#d77a2e"/>
+    </linearGradient>
+    <linearGradient id="bean" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7a4a2d"/>
+      <stop offset="100%" stop-color="#4e2e1e"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="56" fill="url(#bg)"/>
+  <circle cx="156" cy="78" r="34" fill="url(#sun)" opacity="0.95"/>
+  <path d="M28 150c24-36 49-54 74-54 25 0 47 12 67 36 7 9 20 15 38 18v40H28z" fill="#25463a"/>
+  <path d="M28 174c20-16 39-24 58-24 18 0 33 5 45 14 11 8 25 12 42 12 13 0 24-2 39-8v28H28z" fill="#f5ead7"/>
+  <g transform="translate(80 72)">
+    <path d="M44 18c20 0 36 17 36 39S64 98 44 98 8 81 8 57s16-39 36-39z" fill="url(#bean)"/>
+    <path d="M45 26c-10 12-14 24-14 37 0 12 4 24 14 35" fill="none" stroke="#e9d4bc" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

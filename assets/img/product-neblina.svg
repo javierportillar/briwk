@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-labelledby="title desc">
+  <title id="title">Producto Neblina Drip Pack</title>
+  <desc id="desc">Caja ilustrada del producto Neblina Drip Pack en tonos verdes y marfil.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eff2e8"/>
+      <stop offset="100%" stop-color="#d6dfcf"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#27473b"/>
+      <stop offset="100%" stop-color="#17352c"/>
+    </linearGradient>
+  </defs>
+  <rect width="420" height="420" rx="44" fill="url(#bg)"/>
+  <circle cx="106" cy="84" r="28" fill="#f4a259" opacity="0.88"/>
+  <path d="M0 310c82-71 164-93 247-69 52 16 104 46 156 91v88H0z" fill="#93ab88"/>
+  <path d="M0 356c82-22 156-20 221 5 49 18 110 38 182 59H0z" fill="#49685a"/>
+  <ellipse cx="206" cy="334" rx="116" ry="26" fill="#17352c" opacity="0.16"/>
+  <g transform="translate(102 64)">
+    <rect x="0" y="38" width="214" height="244" rx="22" fill="url(#box)"/>
+    <rect x="26" width="162" height="62" rx="18" fill="#335548"/>
+    <rect x="48" y="90" width="118" height="118" rx="26" fill="#f5ead8"/>
+    <path d="M107 118c18 0 32 15 32 34s-14 34-32 34-32-15-32-34 14-34 32-34z" fill="#f4a259"/>
+    <path d="M107 132c9 10 14 21 14 33" fill="none" stroke="#17352c" stroke-width="6" stroke-linecap="round"/>
+    <rect x="40" y="228" width="134" height="14" rx="7" fill="#90a68b"/>
+    <rect x="40" y="252" width="88" height="12" rx="6" fill="#b2c1ae"/>
+    <g transform="translate(172 208)">
+      <rect width="20" height="50" rx="10" fill="#f1ddc7"/>
+      <rect x="-18" y="4" width="14" height="42" rx="7" fill="#f1ddc7" opacity="0.88"/>
+      <rect x="-36" y="8" width="10" height="34" rx="5" fill="#f1ddc7" opacity="0.72"/>
+    </g>
+  </g>
+  <text x="210" y="336" text-anchor="middle" fill="#17352c" font-family="Georgia, serif" font-size="24" font-weight="700">Neblina Drip Pack</text>
+</svg>

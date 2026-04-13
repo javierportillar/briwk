@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Informe académico | Bruma Alta</title>
+    <meta
+      name="description"
+      content="Informe académico completo del prototipo Bruma Alta: BrandScript, heurísticas UX, diagnóstico SEO, canvas logístico, dataset, KPIs y metas SMART."
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script src="../assets/js/main.js" defer></script>
+  </head>
+  <body
+    data-page="informe"
+    data-root=".."
+    data-language="es"
+    data-title-es="Informe académico | Bruma Alta"
+    data-title-en="Academic report | Bruma Alta"
+    data-desc-es="Informe académico completo del prototipo Bruma Alta: BrandScript, heurísticas UX, diagnóstico SEO, canvas logístico, dataset, KPIs y metas SMART."
+    data-desc-en="Complete academic report for the Bruma Alta prototype: BrandScript, UX heuristics, SEO diagnosis, logistics canvas, dataset, KPIs and SMART goals."
+  >
+    <div id="site-header"></div>
+
+    <main id="contenido-principal" class="page">
+      <section class="container report-cover surface-panel">
+        <div>
+          <p class="kicker">Entrega académica</p>
+          <h1>Informe integral del portal Bruma Alta</h1>
+          <p class="page-intro">
+            Este informe organiza toda la parte conceptual y analítica solicitada en la actividad de la Unidad 2:
+            BrandScript, heurísticas de usabilidad, diagnóstico SEO, canvas logístico cross-border, dataset ficticio,
+            cálculo de KPIs, interpretación y metas SMART.
+          </p>
+          <div class="report-badges">
+            <span class="report-badge">Fecha límite: lunes 13 de abril de 2026</span>
+            <span class="report-badge">Hosting sugerido: GitHub Pages</span>
+            <span class="report-badge">Sitio bilingüe: español / inglés</span>
+            <span class="report-badge">Activos visuales: originales</span>
+          </div>
+        </div>
+        <div class="report-card">
+          <h2>Ficha del proyecto</h2>
+          <ul class="list">
+            <li>Marca conceptual: Bruma Alta.</li>
+            <li>Categoría: café colombiano de especialidad.</li>
+            <li>Público objetivo: jóvenes profesionales, estudiantes y compradores de regalos con interés en experiencias de calidad.</li>
+            <li>Propuesta de valor: café de altura con información clara, empaque atractivo y posibilidad de crecimiento cross-border.</li>
+            <li>Formato técnico: portal estático en HTML, CSS y JavaScript puro.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="container section">
+        <article class="report-card">
+          <p class="kicker">1. Revisión del brief inicial</p>
+          <h2>Mejoras aplicadas frente al resumen que recibiste</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Punto</th>
+                  <th>Cómo venía en el resumen</th>
+                  <th>Cómo se ajustó en este proyecto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Idiomas</td>
+                  <td>Se interpretó como “español o inglés”.</td>
+                  <td>En la captura aparece “contenido en dos idiomas”, por eso el portal quedó bilingüe con selector ES/EN.</td>
+                </tr>
+                <tr>
+                  <td>Imágenes</td>
+                  <td>Solo se sugería poner imágenes.</td>
+                  <td>La consigna advierte evitar imágenes tomadas de internet. Se crearon SVG originales dentro de <code>assets/img</code>.</td>
+                </tr>
+                <tr>
+                  <td>Información comercial</td>
+                  <td>Se enfatizaban productos y precios.</td>
+                  <td>También se incluyeron especificaciones, transporte, cuidados, garantía, pagos y políticas visibles.</td>
+                </tr>
+                <tr>
+                  <td>SEO</td>
+                  <td>Se proponía un análisis general.</td>
+                  <td>Se dejó el portal preparado con títulos, meta descriptions, headings, alt text y estructura semántica para un diagnóstico inicial realista.</td>
+                </tr>
+                <tr>
+                  <td>Entrega</td>
+                  <td>Se sugería GitHub Pages por conveniencia.</td>
+                  <td>Se mantiene GitHub Pages como mejor opción, pero se aclara que la consigna acepta cualquier hosting gratuito que entregue un link funcional.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="container section">
+        <article class="report-card">
+          <p class="kicker">2. BrandScript</p>
+          <h2>StoryBrand aplicado a Bruma Alta</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Parte</th>
+                  <th>Desarrollo para la marca</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Personaje</td>
+                  <td>Consumidores que quieren café de especialidad con una experiencia simple, confiable y visualmente clara.</td>
+                </tr>
+                <tr>
+                  <td>Problema</td>
+                  <td>
+                    Externo: demasiadas opciones confusas y poca información útil.
+                    Interno: frustración por comprar café “bonito” pero poco claro.
+                    Filosófico: una buena compra debería sentirse segura, informada y honesta.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Guía</td>
+                  <td>Bruma Alta actúa como una marca experta y cercana: muestra origen, perfiles, cuidados, pagos y logística sin saturar la interfaz.</td>
+                </tr>
+                <tr>
+                  <td>Plan</td>
+                  <td>1. Elige el formato ideal. 2. Revisa precio, envío y método de pago. 3. Disfruta café de altura con guía clara.</td>
+                </tr>
+                <tr>
+                  <td>Llamado a la acción</td>
+                  <td>Ver productos, añadir al carrito y revisar la ficha completa.</td>
+                </tr>
+                <tr>
+                  <td>Evitar fracaso</td>
+                  <td>Evitar compras impulsivas mal informadas, regalos poco memorables y frustración por políticas escondidas.</td>
+                </tr>
+                <tr>
+                  <td>Éxito</td>
+                  <td>Comprar con seguridad, entender el producto antes de pagar y asociar la marca con calidad, claridad y diseño.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="container section">
+        <article class="report-card">
+          <p class="kicker">3. UX/UI</p>
+          <h2>Heurísticas de Nielsen aplicadas al prototipo</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Heurística</th>
+                  <th>Cómo se aplica en el sitio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Visibilidad del estado del sistema</td>
+                  <td>El carrito ilustrativo muestra contador actualizado y un mensaje emergente cuando el usuario añade un producto.</td>
+                </tr>
+                <tr>
+                  <td>Coincidencia con el mundo real</td>
+                  <td>Se usa lenguaje comercial cotidiano: precio, gramaje, envío, caja de regalo, perfil sensorial y garantía.</td>
+                </tr>
+                <tr>
+                  <td>Consistencia y estándares</td>
+                  <td>Botones, etiquetas, tablas y tarjetas mantienen estilo uniforme en todo el portal, con la misma jerarquía visual.</td>
+                </tr>
+                <tr>
+                  <td>Prevención de errores</td>
+                  <td>Las políticas están visibles antes de cualquier intención de compra y los medios de pago aparecen sin obligar al usuario a recordarlos.</td>
+                </tr>
+                <tr>
+                  <td>Reconocimiento antes que recuerdo</td>
+                  <td>El menú muestra colecciones claras y el catálogo permite filtrar por categorías visibles.</td>
+                </tr>
+                <tr>
+                  <td>Diseño estético y minimalista</td>
+                  <td>Se prioriza la información esencial, se evitan bloques saturados y las ilustraciones refuerzan la marca sin distraer la navegación.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="container section">
+        <article class="report-card">
+          <p class="kicker">4. Diagnóstico SEO inicial</p>
+          <h2>Estado básico del prototipo antes de publicarlo</h2>
+          <div class="grid-3">
+            <article class="metric-card">
+              <div class="metric-number">SEO</div>
+              <strong>Títulos y meta descripciones</strong>
+              <small>Cada página principal tiene <code>title</code> y <code>meta description</code> propios y descriptivos.</small>
+            </article>
+            <article class="metric-card">
+              <div class="metric-number">H1</div>
+              <strong>Estructura semántica</strong>
+              <small>Se usan <code>h1</code>, <code>h2</code> y tablas con encabezados coherentes, además de <code>main</code>, <code>section</code> y <code>article</code>.</small>
+            </article>
+            <article class="metric-card">
+              <div class="metric-number">ALT</div>
+              <strong>Accesibilidad e imágenes</strong>
+              <small>Todas las imágenes creadas para el proyecto incluyen texto alternativo descriptivo.</small>
+            </article>
+          </div>
+          <ul class="list" style="margin-top: 1rem;">
+            <li>Indexación: todavía no puede confirmarse en Google hasta que el sitio se publique y se envíe el dominio a Search Console.</li>
+            <li>Rastreo: no se detectan barreras obvias en la versión estática; el HTML es liviano y no depende de frameworks complejos.</li>
+            <li>Páginas clave revisadas: <code>index.html</code>, <code>catalogo.html</code> y una ficha de producto.</li>
+            <li>Acción siguiente recomendada: publicar, verificar propiedad del sitio y usar la herramienta de inspección de URL para revisar indexación real.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="container section">
+        <article class="report-card">
+          <p class="kicker">5. Canvas logístico cross-border</p>
+          <h2>Simulación de expansión internacional</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Bloque</th>
+                  <th>Aplicación a Bruma Alta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mercado objetivo</td>
+                  <td>Estados Unidos, Chile y México por afinidad con el café de origen, ticket promedio viable y acceso a courier internacional.</td>
+                </tr>
+                <tr>
+                  <td>Producto listo para exportar</td>
+                  <td>Café tostado empacado en formato de bajo peso, con barrera de aroma, ficha descriptiva y empaque secundario.</td>
+                </tr>
+                <tr>
+                  <td>Logística DHL</td>
+                  <td>DHL Express se plantea como operador de referencia para paquetes pequeños, rapidez y trazabilidad.</td>
+                </tr>
+                <tr>
+                  <td>Aduanas y documentos</td>
+                  <td>Factura comercial, lista de empaque, descripción del producto y validación de requisitos regulatorios del país destino.</td>
+                </tr>
+                <tr>
+                  <td>Pricing internacional</td>
+                  <td>Precio FOB conceptual + costo courier + margen comercial + comisión del canal.</td>
+                </tr>
+                <tr>
+                  <td>Marketing cross-border</td>
+                  <td>Contenido de origen, email marketing, campañas segmentadas y gifting corporativo para audiencias nicho.</td>
+                </tr>
+                <tr>
+                  <td>Tendencias</td>
+                  <td>Consumo consciente, storytelling del origen, empaques sostenibles y compra de regalo con identidad.</td>
+                </tr>
+                <tr>
+                  <td>Fidelización</td>
+                  <td>Reposición por suscripción, cajas temáticas y comunicación postventa según perfil de compra.</td>
+                </tr>
+                <tr>
+                  <td>Métricas de éxito</td>
+                  <td>Tasa de recompra, ticket promedio, tiempo de entrega, margen bruto y ROAS de campañas internacionales.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="container section">
+        <article class="report-card">
+          <p class="kicker">6. Dataset ficticio</p>
+          <h2>Base mensual para marzo de 2026</h2>
+          <p class="muted">
+            Se construyó un dataset ficticio de 30 días en formato CSV para simular un mes de operación. Puedes abrirlo desde aquí:
+            <a href="../docs/dataset-ficticio-marzo-2026.csv" data-download-note>dataset-ficticio-marzo-2026.csv</a>.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Variable</th>
+                  <th>Valor mensual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Sesiones</td><td>12.480</td></tr>
+                <tr><td>Pedidos</td><td>412</td></tr>
+                <tr><td>Ingresos</td><td>COP 24.812.000</td></tr>
+                <tr><td>Carritos iniciados</td><td>1.046</td></tr>
+                <tr><td>Carritos abandonados</td><td>634</td></tr>
+                <tr><td>Nuevos clientes</td><td>318</td></tr>
+                <tr><td>Clientes recurrentes</td><td>94</td></tr>
+                <tr><td>Inversión en marketing</td><td>COP 4.770.000</td></tr>
+                <tr><td>COGS</td><td>COP 9.925.000</td></tr>
+                <tr><td>Inventario promedio</td><td>COP 4.250.000</td></tr>
+                <tr><td>Sesiones de una sola página</td><td>4.118</td></tr>
+                <tr><td>Ingresos atribuidos a ads</td><td>COP 14.310.000</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="container section">
+        <article class="report-card">
+          <p class="kicker">7. KPIs</p>
+          <h2>Cálculo e interpretación principal</h2>
+          <div class="stats-grid">
+            <article class="metric-card">
+              <div class="metric-number">CR</div>
+              <strong>3,30 %</strong>
+              <small>Tasa de conversión. Está dentro de un rango razonable para una tienda pequeña.</small>
+              <div class="progress"><span style="width: 66%;"></span></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-number">AOV</div>
+              <strong>COP 60.223</strong>
+              <small>Ticket promedio por pedido.</small>
+              <div class="progress"><span style="width: 60%;"></span></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-number">CLV</div>
+              <strong>COP 572.121</strong>
+              <small>Valor estimado del cliente en su relación con la marca.</small>
+              <div class="progress"><span style="width: 72%;"></span></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-number">CAC</div>
+              <strong>COP 15.000</strong>
+              <small>Costo de adquisición por nuevo cliente.</small>
+              <div class="progress"><span style="width: 48%;"></span></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-number">ROAS</div>
+              <strong>3,0</strong>
+              <small>Por cada peso invertido en ads, se obtienen 3 pesos en ingresos atribuidos.</small>
+              <div class="progress"><span style="width: 75%;"></span></div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-number">GM</div>
+              <strong>60,0 %</strong>
+              <small>Margen bruto saludable para un e-commerce de valor agregado.</small>
+              <div class="progress"><span style="width: 80%;"></span></div>
+            </article>
+          </div>
+          <div class="table-wrap" style="margin-top: 1rem;">
+            <table>
+              <thead>
+                <tr>
+                  <th>KPI</th>
+                  <th>Fórmula</th>
+                  <th>Resultado</th>
+                  <th>Lectura</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Tasa de conversión</td>
+                  <td>412 / 12.480 x 100</td>
+                  <td>3,30 %</td>
+                  <td>Se comporta bien para un catálogo corto.</td>
+                </tr>
+                <tr>
+                  <td>AOV</td>
+                  <td>COP 24.812.000 / 412</td>
+                  <td>COP 60.223</td>
+                  <td>Hay espacio para subirlo con bundles y upsell.</td>
+                </tr>
+                <tr>
+                  <td>CLV</td>
+                  <td>60.223 x 3,8 compras/año x 2,5 años</td>
+                  <td>COP 572.121</td>
+                  <td>El valor del cliente a largo plazo es atractivo.</td>
+                </tr>
+                <tr>
+                  <td>CAC</td>
+                  <td>COP 4.770.000 / 318</td>
+                  <td>COP 15.000</td>
+                  <td>Es razonable si el ticket promedio sigue creciendo.</td>
+                </tr>
+                <tr>
+                  <td>Abandono de carrito</td>
+                  <td>634 / 1.046 x 100</td>
+                  <td>60,61 %</td>
+                  <td>Es el indicador más débil y debe priorizarse.</td>
+                </tr>
+                <tr>
+                  <td>Tasa de clientes recurrentes</td>
+                  <td>94 / 412 x 100</td>
+                  <td>22,82 %</td>
+                  <td>Aceptable para una marca joven, pero todavía mejorable.</td>
+                </tr>
+                <tr>
+                  <td>ROAS</td>
+                  <td>COP 14.310.000 / COP 4.770.000</td>
+                  <td>3,0</td>
+                  <td>La inversión en anuncios se sostiene, aunque no sobra.</td>
+                </tr>
+                <tr>
+                  <td>Bounce rate</td>
+                  <td>4.118 / 12.480 x 100</td>
+                  <td>33,00 %</td>
+                  <td>La atracción inicial del sitio es buena.</td>
+                </tr>
+                <tr>
+                  <td>Margen bruto</td>
+                  <td>(24.812.000 - 9.925.000) / 24.812.000 x 100</td>
+                  <td>60,0 %</td>
+                  <td>La rentabilidad base es sólida.</td>
+                </tr>
+                <tr>
+                  <td>Inventory turnover</td>
+                  <td>9.925.000 / 4.250.000</td>
+                  <td>2,34 veces/mes</td>
+                  <td>Buen movimiento de inventario para un catálogo pequeño.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="container section">
+        <div class="report-grid">
+          <article class="report-card">
+            <p class="kicker">8. Diagnóstico</p>
+            <h2>Lectura general de resultados</h2>
+            <ul class="list">
+              <li>La conversión es sana para un prototipo con pocos productos y una propuesta clara.</li>
+              <li>El abandono de carrito es alto y apunta a una oportunidad de mejora en confianza, recordatorios y simplificación del checkout.</li>
+              <li>El ROAS en 3,0 indica que la publicidad funciona, pero todavía exige optimización creativa y de segmentación.</li>
+              <li>El margen bruto de 60 % confirma que la categoría puede sostener acciones promocionales sin destruir rentabilidad.</li>
+              <li>La recurrencia es útil, aunque debe crecer para que el CLV compense mejor el CAC en el tiempo.</li>
+            </ul>
+          </article>
+
+          <article class="report-card">
+            <p class="kicker">9. Metas SMART</p>
+            <h2>Cuatro metas accionables</h2>
+            <ul class="list">
+              <li>Aumentar la tasa de conversión de 3,30 % a 4,00 % en 90 días mediante mejora de fichas de producto, pruebas A/B de CTA y refuerzo de prueba social.</li>
+              <li>Reducir el abandono de carrito de 60,61 % a 50,00 % en 8 semanas agregando recordatorios, mayor claridad de envío y resumen de compra más visible.</li>
+              <li>Incrementar el AOV de COP 60.223 a COP 69.000 en 12 semanas creando bundles de regalo y cross-sell entre grano y drip packs.</li>
+              <li>Subir la tasa de clientes recurrentes de 22,82 % a 28,00 % en 4 meses mediante email marketing, reposición sugerida y contenido poscompra.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section">
+        <article class="report-card">
+          <p class="kicker">10. Fuentes de referencia</p>
+          <h2>Materiales oficiales útiles para sustentar la entrega</h2>
+          <div class="source-list">
+            <a href="https://www.nngroup.com/articles/ten-usability-heuristics/" target="_blank" rel="noreferrer">NNGroup: 10 Usability Heuristics for User Interface Design</a>
+            <a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide" target="_blank" rel="noreferrer">Google Search Central: SEO Starter Guide</a>
+            <a href="https://support.google.com/webmasters/answer/9012289" target="_blank" rel="noreferrer">Google Search Console Help: URL Inspection Tool</a>
+            <a href="https://bootcamp.latam.express.dhl.com/" target="_blank" rel="noreferrer">DHL Bootcamp LATAM</a>
+            <a href="https://www.shopify.com/learn" target="_blank" rel="noreferrer">Shopify Learn</a>
+            <a href="https://storybrand.com/" target="_blank" rel="noreferrer">StoryBrand</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <div class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
