@@ -55,42 +55,36 @@ http://localhost:8000
 
 ## Publicar en GitHub Pages
 
-### Opción recomendada: GitHub Actions
+### Opción recomendada: Deploy desde rama
 
-Este proyecto ya incluye el workflow [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml), así que no tienes que montar nada adicional.
+Este proyecto es HTML, CSS y JavaScript estático. No necesita pipeline de build, así que la forma más simple y estable de publicarlo es directamente desde la rama `main`.
 
 #### Pasos
 
-1. Crea un repositorio nuevo en GitHub.
-2. Sube el contenido completo de esta carpeta al repositorio.
-3. Asegúrate de que la rama principal se llame `main`.
-4. En GitHub ve a `Settings` → `Pages`.
-5. En `Build and deployment`, selecciona `Source: GitHub Actions`.
-6. Haz un push a `main`.
-7. Espera a que termine el workflow `Deploy Static Site to GitHub Pages`.
-8. GitHub te publicará una URL con este formato:
-
-```text
-https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/
-```
-
-### Opción simple: Deploy desde rama
-
-También puedes publicar sin Actions:
-
-1. Sube esta carpeta a un repositorio.
+1. Sube esta carpeta completa al repositorio.
 2. Ve a `Settings` → `Pages`.
 3. En `Build and deployment`, selecciona:
    - `Source: Deploy from a branch`
    - `Branch: main`
    - `Folder: / (root)`
 4. Guarda.
+5. Espera 1 o 2 minutos.
 
-La URL pública tendrá el mismo formato:
+La URL pública tendrá este formato:
 
 ```text
 https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/
 ```
+
+En este caso, si tu repo sigue siendo `briwk`, la dirección esperada es:
+
+```text
+https://javierportillar.github.io/briwk/
+```
+
+### Si habías activado GitHub Actions
+
+Si ves errores del workflow al estilo `Get Pages site failed`, no es un error del sitio: significa que el repositorio no tenía Pages habilitado para Actions. Como este proyecto no necesita build, es mejor usar `Deploy from a branch` y no depender de ese workflow.
 
 ## Qué revisar después de publicar
 
