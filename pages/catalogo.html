@@ -3,12 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Catalogo | Savia Col. Despensa Saludable</title>
+    <title>Catalogo | Savia Col.</title>
     <meta
       name="description"
-      content="Explora productos naturales y saludables de consumo cotidiano en Savia Col. Despensa Saludable S.A.S. con filtros claros y compra rapida."
+      content="Explora el catalogo bilingue de Savia Col. con harinas alternativas, snacks funcionales, bebidas vegetales, frutos secos, endulzantes y combos saludables."
     />
     <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="Catalogo | Savia Col." />
+    <meta
+      property="og:description"
+      content="Filtra por coleccion, revisa precios y agrega productos saludables al carrito desde el catalogo de Savia Col."
+    />
     <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
     <script src="../assets/js/main.js" defer></script>
@@ -17,10 +22,10 @@
     data-page="catalogo"
     data-root=".."
     data-language="es"
-    data-title-es="Catalogo | Savia Col. Despensa Saludable"
-    data-title-en="Catalog | Savia Col. Healthy Pantry"
-    data-desc-es="Explora productos naturales y saludables de consumo cotidiano en Savia Col. Despensa Saludable S.A.S. con filtros claros y compra rapida."
-    data-desc-en="Browse natural and healthy everyday products at Savia Col. Despensa Saludable S.A.S. with clear filters and a fast shopping flow."
+    data-title-es="Catalogo | Savia Col."
+    data-title-en="Catalog | Savia Col."
+    data-desc-es="Explora el catalogo bilingue de Savia Col. con harinas alternativas, snacks funcionales, bebidas vegetales, frutos secos, endulzantes y combos saludables."
+    data-desc-en="Browse Savia Col.'s bilingual catalog with alternative flours, functional snacks, plant-based drinks, nuts, sweeteners and healthy bundles."
   >
     <div id="site-header"></div>
 
@@ -28,34 +33,34 @@
       <section class="container catalog-hero surface-panel">
         <div>
           <p class="kicker">
-            <span class="lang-es">Conveniencia digital</span>
-            <span class="lang-en">Digital convenience</span>
+            <span class="lang-es">Catalogo completo</span>
+            <span class="lang-en">Full catalog</span>
           </p>
           <h1 class="page-title">
-            <span class="lang-es">Compra productos naturales y saludables desde cualquier dispositivo.</span>
-            <span class="lang-en">Shop natural and healthy products from any device.</span>
+            <span class="lang-es">Encuentra productos para desayuno, snack y despensa.</span>
+            <span class="lang-en">Find products for breakfast, snacks and pantry routines.</span>
           </h1>
         </div>
 
         <p class="page-intro">
           <span class="lang-es">
-            Savia Col. Despensa Saludable S.A.S. organiza la compra con filtros claros, informacion simple y una experiencia rapida para encontrar lo que necesitas sin perder tiempo.
+            Filtra por coleccion, compara precios, revisa fichas claras y construye el pedido sin salir de una experiencia de e-commerce simple.
           </span>
           <span class="lang-en">
-            Savia Col. Despensa Saludable S.A.S. organizes shopping with clear filters, simple information and a fast experience to help you find what you need without wasting time.
+            Filter by collection, compare prices, review clear product pages and build your order within a simple e-commerce experience.
           </span>
         </p>
 
         <label class="search-shell">
           <span class="search-label">
-            <span class="lang-es">Buscar en el surtido</span>
-            <span class="lang-en">Search the assortment</span>
+            <span class="lang-es">Buscar en el catalogo</span>
+            <span class="lang-en">Search the catalog</span>
           </span>
           <input
             type="search"
             data-search-input
-            data-placeholder-es="Busca por sabor, categoria o uso"
-            data-placeholder-en="Search by flavor, category or use"
+            data-placeholder-es="Busca por categoria, ingrediente o uso"
+            data-placeholder-en="Search by category, ingredient or use"
           />
         </label>
 
@@ -64,21 +69,25 @@
             <span class="lang-es">Todos</span>
             <span class="lang-en">All</span>
           </button>
-          <button class="filter-chip" type="button" data-filter-trigger="granolas">
-            <span class="lang-es">Granolas</span>
-            <span class="lang-en">Granolas</span>
+          <button class="filter-chip" type="button" data-filter-trigger="flours">
+            <span class="lang-es">Harinas</span>
+            <span class="lang-en">Flours</span>
           </button>
-          <button class="filter-chip" type="button" data-filter-trigger="pancakes">
-            <span class="lang-es">Pancakes &amp; Waffles</span>
-            <span class="lang-en">Pancakes &amp; Waffles</span>
+          <button class="filter-chip" type="button" data-filter-trigger="snacks">
+            <span class="lang-es">Snacks</span>
+            <span class="lang-en">Snacks</span>
           </button>
-          <button class="filter-chip" type="button" data-filter-trigger="spreads">
-            <span class="lang-es">Cremas</span>
-            <span class="lang-en">Spreads</span>
+          <button class="filter-chip" type="button" data-filter-trigger="milks">
+            <span class="lang-es">Bebidas vegetales</span>
+            <span class="lang-en">Plant-based drinks</span>
           </button>
-          <button class="filter-chip" type="button" data-filter-trigger="pantry">
-            <span class="lang-es">Despensa</span>
-            <span class="lang-en">Pantry</span>
+          <button class="filter-chip" type="button" data-filter-trigger="sweeteners">
+            <span class="lang-es">Endulzantes</span>
+            <span class="lang-en">Sweeteners</span>
+          </button>
+          <button class="filter-chip" type="button" data-filter-trigger="nuts">
+            <span class="lang-es">Frutos secos</span>
+            <span class="lang-en">Nuts</span>
           </button>
           <button class="filter-chip" type="button" data-filter-trigger="bundles">
             <span class="lang-es">Combos</span>
@@ -92,16 +101,16 @@
             <span class="lang-en">0 products found</span>
           </p>
           <p class="muted">
-            <span class="lang-es">Filtra en tiempo real y ajusta tu carrito mientras recorres el catalogo.</span>
-            <span class="lang-en">Filter in real time and adjust your cart while browsing the catalog.</span>
+            <span class="lang-es">Compra bilingue, carrito persistente y filtros en tiempo real.</span>
+            <span class="lang-en">Bilingual shopping, persistent cart and real-time filters.</span>
           </p>
         </div>
       </section>
 
       <section class="container section">
         <div id="catalog-empty" class="empty-state">
-          <span class="lang-es">No encontramos resultados con esa combinacion. Prueba otra categoria o cambia el termino de busqueda.</span>
-          <span class="lang-en">We could not find results for that combination. Try another category or adjust your search.</span>
+          <span class="lang-es">No encontramos resultados con esa busqueda. Prueba otra categoria o ajusta el termino.</span>
+          <span class="lang-en">We could not find results for that search. Try another collection or adjust the term.</span>
         </div>
         <div id="catalog-grid" class="product-grid"></div>
       </section>
@@ -110,50 +119,56 @@
         <div class="info-grid">
           <article class="card">
             <p class="kicker">
-              <span class="lang-es">Como elegir</span>
-              <span class="lang-en">How to choose</span>
+              <span class="lang-es">Antes de pagar</span>
+              <span class="lang-en">Before paying</span>
             </p>
             <h2>
-              <span class="lang-es">Mira el formato, el perfil de sabor y el uso sugerido.</span>
-              <span class="lang-en">Check the format, flavor profile and suggested use.</span>
+              <span class="lang-es">Lo esencial ya esta dentro de la tienda.</span>
+              <span class="lang-en">The essentials are already inside the store.</span>
             </h2>
             <ul class="list">
               <li>
-                <span class="lang-es">Los tags te ayudan a ver tamano, tipo de producto y forma de consumo.</span>
-                <span class="lang-en">Tags help you identify size, product type and suggested use at a glance.</span>
+                <span class="lang-es">Ficha con ingredientes, presentacion, uso sugerido, cuidados y garantia.</span>
+                <span class="lang-en">Product pages with ingredients, format, suggested use, care and warranty.</span>
               </li>
               <li>
-                <span class="lang-es">Cada ficha incluye resumen, precio y acceso directo al carrito.</span>
-                <span class="lang-en">Each card includes a short summary, price and direct cart access.</span>
+                <span class="lang-es">Politicas visibles en footer para privacidad, terminos, envios y devoluciones.</span>
+                <span class="lang-en">Visible footer policies for privacy, terms, shipping and returns.</span>
               </li>
               <li>
-                <span class="lang-es">Los combos son utiles si prefieres surtirte con un solo pedido.</span>
-                <span class="lang-en">Bundles are useful if you prefer to restock with a single order.</span>
+                <span class="lang-es">Orden por WhatsApp apoyada por carrito para un flujo simple y demostrable.</span>
+                <span class="lang-en">WhatsApp ordering supported by the cart for a simple and demonstrable flow.</span>
               </li>
             </ul>
           </article>
 
           <article class="card">
             <p class="kicker">
-              <span class="lang-es">Compra segura</span>
-              <span class="lang-en">Safe shopping</span>
+              <span class="lang-es">Pago y entrega</span>
+              <span class="lang-en">Payment and delivery</span>
             </p>
             <h2>
-              <span class="lang-es">Informacion clave antes de confirmar tu pedido.</span>
-              <span class="lang-en">Key information before confirming your order.</span>
+              <span class="lang-es">Condiciones comerciales visibles desde el catalogo.</span>
+              <span class="lang-en">Commercial conditions visible from the catalog.</span>
             </h2>
+            <div class="payment-row">
+              <span class="payment-chip">Wompi</span>
+              <span class="payment-chip">Mercado Pago</span>
+              <span class="payment-chip">PayU</span>
+              <span class="payment-chip">PSE</span>
+            </div>
             <ul class="list">
               <li>
-                <span class="lang-es">Pagos por tarjeta, PSE, Mercado Pago o transferencia.</span>
-                <span class="lang-en">Payments by card, PSE, Mercado Pago or bank transfer.</span>
+                <span class="lang-es">Envio gratis desde COP 160.000 dentro de Colombia.</span>
+                <span class="lang-en">Free shipping within Colombia from COP 160,000.</span>
               </li>
               <li>
-                <span class="lang-es">Envio gratis desde COP 160.000 y cobertura nacional.</span>
-                <span class="lang-en">Free shipping over COP 160,000 with nationwide coverage.</span>
+                <span class="lang-es">Tarifas desde COP 8.000 segun ciudad y cobertura.</span>
+                <span class="lang-en">Rates from COP 8,000 depending on city and coverage.</span>
               </li>
               <li>
-                <span class="lang-es">Atencion por WhatsApp para confirmar disponibilidad y despacho.</span>
-                <span class="lang-en">WhatsApp support to confirm availability and dispatch details.</span>
+                <span class="lang-es">Atencion por WhatsApp para seguimiento, cambios y novedades.</span>
+                <span class="lang-en">WhatsApp support for tracking, exchanges and updates.</span>
               </li>
             </ul>
           </article>
