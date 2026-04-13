@@ -735,6 +735,7 @@ function injectShell() {
   const footerTarget = document.querySelector("#site-footer");
   const homeHref = fromRoot("index.html");
   const catalogHref = fromRoot("pages/catalogo.html");
+  const reportHref = fromRoot("pages/informe-academico.html");
   const shippingHref = fromRoot("pages/envios-y-devoluciones.html");
   const privacyHref = fromRoot("pages/politica-privacidad.html");
   const termsHref = fromRoot("pages/terminos-condiciones.html");
@@ -747,12 +748,12 @@ function injectShell() {
       <header class="site-header">
         <div class="container topbar">
           <div>${bilingualText(
-            `<strong>Envio gratis</strong> desde ${formatCurrency(FREE_SHIPPING_THRESHOLD)} en compras nacionales.`,
-            `<strong>Free shipping</strong> over ${formatCurrency(FREE_SHIPPING_THRESHOLD)} on nationwide orders.`,
+            "<strong>Curaduria confiable</strong> con seleccion saludable e informacion clara.",
+            "<strong>Trusted curation</strong> with a healthy selection and clear information.",
           )}</div>
           <div>${bilingualText(
-            "Atencion directa por WhatsApp para resolver pedidos, envios y disponibilidad.",
-            "Direct WhatsApp support for orders, shipping and availability.",
+            "Compra rapida desde cualquier dispositivo y atencion directa por WhatsApp.",
+            "Fast shopping from any device with direct WhatsApp support.",
           )}</div>
         </div>
         <div class="container nav-row">
@@ -762,8 +763,8 @@ function injectShell() {
               <span class="brand-name">Savia Col.</span>
               <span class="brand-tag">
                 ${bilingualText(
-                  "Granolas, mezclas y basicos para tu rutina",
-                  "Granolas, mixes and staples for your daily routine",
+                  "Despensa Saludable S.A.S.",
+                  "Healthy Pantry S.A.S.",
                 )}
               </span>
             </span>
@@ -775,6 +776,9 @@ function injectShell() {
             </a>
             <a class="nav-link ${page === "catalogo" ? "is-active" : ""}" href="${catalogHref}">
               ${bilingualText("Catalogo", "Catalog")}
+            </a>
+            <a class="nav-link ${page === "informe" ? "is-active" : ""}" href="${reportHref}">
+              ${bilingualText("Propuesta", "Proposal")}
             </a>
             <a class="nav-link ${page === "envios" ? "is-active" : ""}" href="${shippingHref}">
               ${bilingualText("Envios", "Shipping")}
@@ -866,8 +870,8 @@ function injectShell() {
               <strong class="brand-name">Savia Col.</strong>
               <p class="muted">
                 ${bilingualText(
-                  "Sabores pensados para desayunos faciles, snacks amables y una despensa que acompana la semana.",
-                  "Flavors designed for easy breakfasts, gentle snacks and a pantry that supports the whole week.",
+                  "Curaduria confiable, conveniencia digital y educacion nutricional para alimentarte mejor sin complicarte la vida.",
+                  "Trusted curation, digital convenience and nutrition education to help you eat better without complicating your life.",
                 )}
               </p>
             </div>
@@ -883,6 +887,7 @@ function injectShell() {
 
           <section class="footer-links">
             <strong>${bilingualText("Ayuda", "Help")}</strong>
+            <a href="${reportHref}">${bilingualText("Propuesta de negocio", "Business proposal")}</a>
             <a href="${shippingHref}">${bilingualText("Envios y devoluciones", "Shipping and returns")}</a>
             <a href="${privacyHref}">${bilingualText("Politica de privacidad", "Privacy policy")}</a>
             <a href="${termsHref}">${bilingualText("Terminos y condiciones", "Terms and conditions")}</a>

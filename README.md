@@ -1,14 +1,14 @@
 # Savia Col.
 
-Proyecto estático de e-commerce para una actividad universitaria de la Unidad 2, rediseñado con foco en UI comercial, mejor visualización mobile y despliegue simple en GitHub Pages.
+Proyecto estático de e-commerce para una actividad universitaria, basado en la propuesta de negocio del PDF `E bussines - E commerce.pdf` y preparado para publicarse en GitHub Pages.
 
 ## Qué incluye
 
-- Home rediseñado con mejor jerarquía visual.
+- Home y comunicación de marca alineados con la propuesta de Savia Col. Despensa Saludable S.A.S.
 - Catálogo filtrable con búsqueda.
 - Ficha dinámica de producto por `slug`.
 - Páginas de envíos, privacidad y términos.
-- Informe académico en [pages/informe-academico.html](pages/informe-academico.html).
+- Página de propuesta de negocio en [pages/informe-academico.html](pages/informe-academico.html).
 - Dataset ficticio en [docs/dataset-ficticio-marzo-2026.csv](docs/dataset-ficticio-marzo-2026.csv).
 - Flujo listo para publicar en GitHub Pages.
 
@@ -17,15 +17,12 @@ Proyecto estático de e-commerce para una actividad universitaria de la Unidad 2
 ```text
 pag_web/
 ├── index.html
-├── 404.html (opcional, no incluido)
 ├── .nojekyll
-├── .github/workflows/deploy-pages.yml
 ├── assets/
 │   ├── css/styles.css
 │   ├── js/main.js
 │   └── img/
 ├── docs/
-│   ├── capturas/
 │   └── dataset-ficticio-marzo-2026.csv
 ├── pages/
 │   ├── catalogo.html
