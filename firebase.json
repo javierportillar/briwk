@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "**/.*",
+      "**/node_modules/**",
+      "package.json",
+      "package-lock.json",
+      "README.md",
+      "pendiente.txt",
+      "*.docx",
+      "*.pdf",
+      "Evidencias corte 3 Savia Col/**",
+      "docs/capturas/**"
+    ]
+  }
+}

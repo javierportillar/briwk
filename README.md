@@ -1,6 +1,6 @@
 # Savia Col.
 
-Proyecto estático de e-commerce para una actividad universitaria, basado en la propuesta de negocio del PDF `E bussines - E commerce.pdf` y preparado para publicarse en GitHub Pages.
+Proyecto estático de e-commerce para una actividad universitaria, basado en la propuesta de negocio del PDF `E bussines - E commerce.pdf` y el documento `E bussiness corte 3.docx`.
 
 ## Qué incluye
 
@@ -10,7 +10,7 @@ Proyecto estático de e-commerce para una actividad universitaria, basado en la 
 - Páginas de envíos, privacidad y términos.
 - Página de propuesta de negocio en [pages/informe-academico.html](pages/informe-academico.html).
 - Dataset ficticio en [docs/dataset-ficticio-marzo-2026.csv](docs/dataset-ficticio-marzo-2026.csv).
-- Flujo listo para publicar en GitHub Pages.
+- Documento de soporte actualizado para entregar con la URL Web App.
 
 ## Estructura
 
@@ -40,7 +40,7 @@ pag_web/
 ## Probar localmente
 
 ```bash
-cd "/Users/javierportillarosero/Documents/Bri ❤️/Uni/pag_web"
+cd "/Users/javierportillarosero/Documents/PROG/briwk"
 python3 -m http.server 8000
 ```
 
@@ -50,60 +50,23 @@ Luego abre:
 http://localhost:8000
 ```
 
-## Publicar en GitHub Pages
-
-### Opción recomendada: Deploy desde rama
-
-Este proyecto es HTML, CSS y JavaScript estático. No necesita pipeline de build, así que la forma más simple y estable de publicarlo es directamente desde la rama `main`.
-
-#### Pasos
-
-1. Sube esta carpeta completa al repositorio.
-2. Ve a `Settings` → `Pages`.
-3. En `Build and deployment`, selecciona:
-   - `Source: Deploy from a branch`
-   - `Branch: main`
-   - `Folder: / (root)`
-4. Guarda.
-5. Espera 1 o 2 minutos.
-
-La URL pública tendrá este formato:
+## Link de entrega
 
 ```text
-https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/
+https://briyithestrada-90ab7.web.app/
 ```
 
-En este caso, si tu repo sigue siendo `briwk`, la dirección esperada es:
-
-```text
-https://javierportillar.github.io/briwk/
-```
-
-### Si habías activado GitHub Actions
-
-Si ves errores del workflow al estilo `Get Pages site failed`, no es un error del sitio: significa que el repositorio no tenía Pages habilitado para Actions. Como este proyecto no necesita build, es mejor usar `Deploy from a branch` y no depender de ese workflow.
-
-## Qué revisar después de publicar
+## Qué revisar antes de entregar
 
 - Que cargue la portada.
 - Que abra [pages/catalogo.html](pages/catalogo.html).
 - Que funcione [pages/producto.html](pages/producto.html) con query string, por ejemplo:
 
 ```text
-https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/pages/producto.html?slug=back-to-routine
+https://briyithestrada-90ab7.web.app/pages/producto.html?slug=combo-despensa-esencial
 ```
 
 - Que los cambios de idioma respondan.
 - Que el carrito demostrativo sume productos.
 - Que el CSV y el PDF abran desde la web.
-
-## Acceder desde otro lugar
-
-Una vez publicado en GitHub Pages, podrás abrirlo desde cualquier dispositivo con internet usando la URL pública del repositorio. No necesitas que tu computador esté encendido porque GitHub aloja el sitio.
-
-## Nota útil
-
-Si luego quieres que la URL quede más limpia, puedes:
-
-- renombrar el repositorio a algo corto, por ejemplo `savia-col`.
-- usar un dominio propio más adelante.
+- Que [pages/informe-academico.html](pages/informe-academico.html) muestre la Unidad 3 con semanas 11 a 17.

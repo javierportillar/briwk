@@ -1,0 +1,289 @@
+UNIDAD 3. LANZAMIENTO Y CONTROL
+
+Ya estamos en la última etapa de crear un comercio electrónico.  Como primera tarea, deben mejorar el portal web, recuerden que las imagenes y texto tienen propiedad intelectual, por lo tanto no se permite copia o reproducción.  Ahora es necesario tener en cuenta unas consideraciones para el negocio, que permitirán desarrollar la actividad comercial de manera correcta.
+
+El último informe debe contener:
+
+El link corregido del portal.  (Si es solicitado)
+
+Manejo de inventario. (Cantidad necesaria de productos por periodo según estimación de mercado)
+
+Estructura de costos. (Al vender una sola unidad, y al vender varias) que le permitan un margen de ganancia.
+
+Servicios postventa.
+
+Plan de lanzamiento al mercado.
+
+
+
+EVALUACIÓN POR ENFOQUE: Email marketing, automatización y toma de decisiones.
+
+
+
+(Revisar la sección de recursos para acceder al material de estudio)
+
+
+
+SEMANA 11
+
+Evaluar pasarelas para casos de e-commerce en LATAM por criterios:
+
+Cobertura países.
+
+Métodos (tarjetas, wallets, efectivo, cuotas).
+
+Comisiones/recuperación rechazos.
+
+Integración (Woo/Shopify/API).
+
+Seguridad (PCI, antifraude).
+
+
+
+SEMANA 12
+
+Simular "eTrade Readiness Assessment" para su e‑commerce:
+
+Identifica brechas vs. pilares UNCTAD:
+
+·         Infra/skills: % equipo capacitado digital.
+
+·         Mujeres: % ventas por emprendedoras.
+
+·         Sostenibilidad: embalaje eco, carbono envíos.
+
+Propone acciones:
+
+·         Capacitación (eTrade for Women).
+
+·         Alianzas (eTrade for all).
+
+·         Métricas (ventas exportadoras, ODS impactados).
+
+
+
+SEMANA 13
+
+Diseñar y simular un flujo de automatización Mailchimp para un escenario e‑commerce
+
+Identificar 3 oportunidades para su e‑commerce:
+
+·         Abandoned cart
+
+·         Welcome new subscriber.
+
+·         Post‑purchase upsell.
+
+Lista triggers/datos necesarios
+
+
+
+SEMANA 14
+
+Analizar resultados con IA.
+
+Enfoca escenario "lanzamiento tienda online PYME Colombia":
+
+Decisiones por área:
+
+·         Marketing: Canales (redes, SEO), presupuesto ads.
+
+·         Finanzas: Precios, márgenes, inversión inicial.
+
+·         Ops/Logística: Proveedores, inventario, fulfillment (integra VR tour).
+
+·         RRHH: Contrataciones para growth.
+
+·         Envía decisiones → IA procesa resultados (ventas, market share, cash flow).
+
+·         Analiza con mentor IA: "¿Qué mejorar en logística e‑com?
+
+
+
+SEMANA 15
+
+Analizar datos simulados de Skillshop cursos.
+
+
+
+Actividad 1: onboarding Skillshop y GA4 demo
+
+Regístrate en Skillshop, inicia "Fundamentos GA4" (módulo 1 intro).
+
+Crea propiedad GA4 demo (web stream).
+
+Instala tag GTM o código (demo site como demo.ecommerce.com).
+
+
+
+Actividad 2: setup e‑com tracking (40 min)
+
+Simula tienda (usa demo o proyecto clase):
+
+Eventos e‑com: Configura view_item, add_to_cart, begin_checkout, purchase vía GTM o Shopify plugin.
+
+
+
+Conversiones: Marca purchase como conversión clave.
+
+Exploraciones: Crea funnel abandono carrito, segmenta por fuente tráfico.
+
+Captura reportes: Adquisición (orgánico/pago), Monetización (revenue por canal).
+
+
+
+SEMANA 16
+
+Analizar 3–4 artículos HBR y extraigan lecciones accionables para un plan estratégico de e‑commerce.
+
+Cruzar insights:
+
+
+
+       Escenario: Su e-commerce
+
+
+
+       Aplica 3 insights:
+
+•             AI pricing dinámico.hbr
+
+•             Livestream influencers.hbs
+
+•             Omnichannel post pandemia.hbr
+
+
+
+       Debate pros/contras LATAM (regulaciones, cultura, competencia).
+
+Tabla estrategia:
+
+Insight HBR
+
+Aplicación local
+
+Riesgo
+
+Pricing tests
+
+A/B precios CO/MX
+
+Inflación hbr
+
+
+
+
+
+SEMANA 17
+
+Usar la plantilla HubSpot descargada (Docs editable):
+
+Prioriza e-commerce:
+
+Ejemplo:
+
+•             Productos: 3–5 items, precios, márgenes (tabla).
+
+•             Mercado: Competencia (SWOT), segmento (20–35 mujeres urbanas).
+
+•             Marketing: Plan 6 meses (SEO, Instagram ads, email abandoned cart).
+
+•             Finanzas: Proyecciones año 1 (ingresos $50k, gastos $30k, break even mes 6).
+
+•             Operaciones: Shopify + PSE + DHL.offers.hubspot
+
+
+
+Ejemplo tabla finanzas:
+
+Mes
+
+Ingresos
+
+Gastos
+
+Neto
+
+1
+
+$2k
+
+$3k
+
+-$1k
+
+
+
+Fecha límite de entrega: Lunes 18 de mayo de 2026
+
+assign iconPresentación de Tarea 3
+
+Enfoque: Email marketing, automatización y toma de decisiones.
+
+·         Semana 11: Pasarelas de Pago Internacionales
+
+Objetivo: Que los estudiantes evalúen y recomienden la mejor pasarela para un caso de e‑commerce en LATAM, considerando costos, métodos locales y escalabilidad.
+
+o    Recurso: Guía de Pagos Digitales en Latinoamérica (Rebill/Stripe).
+
+o    Link: Comparativa de Pasarelas LATAM - Rebill Blog
+
+
+
+·         Semana 12: Logística Verde
+
+Objetivo: Que los estudiantes analicen desafíos de sostenibilidad en e‑commerce desde perspectiva de países en desarrollo y propongan un plan para un negocio digital inclusivo.
+
+o    Recurso: Circular Economy in Electronics (UNCTAD).
+
+o    Link: Sostenibilidad Digital - UNCTAD Insights
+
+
+
+·         Semana 13: Email Marketing y Automatización
+
+Objetivo: Que los estudiantes diseñen y simulen un flujo de automatización Mailchimp para un escenario e‑commerce (ej. recuperación ventas).
+
+o    Recurso: Mailchimp Academy (Certificación Gratuita).
+
+o    Link: Mailchimp Tutorials & Training
+
+
+
+·         Semana 14: Simulación de Negocios
+
+Objetivo: Que los estudiantes experimenten simulación de e‑commerce en CEOSim.ai, tomando decisiones estratégicas y analizando resultados con IA.
+
+o    Recurso: Portal de Acceso CEOSim (Simulador sugerido).
+
+o    Link: CEOSim - Simulador Empresarial IA
+
+
+
+·         Semana 15: Analítica de Datos (GA4)
+
+Objetivo: Que los estudiantes configuren GA4 básico para un sitio e commerce y analicen datos simulados de Skillshop cursos.
+
+o    Recurso: Google Analytics Academy.
+
+o    Link: Skillshop - Google Analytics 4
+
+
+
+·         Semana 16: Plan de Lanzamiento (Go-to-Market)
+
+Objetivo: Que los estudiantes analicen 3–4 artículos HBR y extraigan lecciones accionables para un plan estratégico de e‑commerce.
+
+o    Recurso: Casos de Estudio: Nubank y Disrupción Regional.
+
+o    Link: Harvard Business Review - E-commerce Cases (Previsualización)
+
+
+
+·         Semana 17: Pitch Final y Presentación
+
+Objetivo: Que los estudiantes rellenen la plantilla HubSpot para un e‑commerce ficticio/local, priorizando secciones clave.
+
+o    Recurso: Guía de Estructura de Estructura de Costos para Portales Virtuales.
+
+o    Link: E-commerce Business Plan Template - Hubspot

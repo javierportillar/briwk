@@ -8,6 +8,7 @@ const RETURN_WINDOW_DAYS = 5;
 const WHATSAPP_NUMBER = "573108179620";
 const SUPPORT_EMAIL = "hola@saviacol.co";
 const SUPPORT_CITY = "Pasto, Colombia";
+const GA_MEASUREMENT_ID = "G-40E6XHBPJY";
 
 const CATEGORY_META = {
   all: {
@@ -471,6 +472,61 @@ function formatCurrency(value) {
   }).format(value);
 }
 
+function gaItem(product, quantity = 1) {
+  return {
+    item_id: product.slug,
+    item_name: product.name,
+    item_category: CATEGORY_META[product.category]?.labelEs || product.category,
+    price: product.price,
+    quantity,
+  };
+}
+
+function initAnalytics() {
+  if (!GA_MEASUREMENT_ID || window.gtag) return;
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    window.dataLayer.push(arguments);
+  };
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.appendChild(script);
+
+  window.gtag("js", new Date());
+  window.gtag("config", GA_MEASUREMENT_ID, {
+    page_title: document.title,
+    page_path: window.location.pathname + window.location.search,
+  });
+}
+
+function trackEvent(name, params = {}) {
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", name, params);
+}
+
+function trackCartCheckout(entries) {
+  const value = cartSubtotal(entries);
+  if (!value) return;
+
+  const payload = {
+    currency: "COP",
+    value,
+    items: entries.map((entry) => gaItem(entry.product, entry.quantity)),
+  };
+
+  trackEvent("begin_checkout", payload);
+
+  // Academic demo: the storefront closes orders through WhatsApp, so the WhatsApp order request is recorded as the simulated purchase event.
+  trackEvent("purchase", {
+    ...payload,
+    transaction_id: `SAVIA-DEMO-${Date.now()}`,
+    shipping: value >= FREE_SHIPPING_THRESHOLD ? 0 : 12000,
+  });
+}
+
 function discountPercent(oldPrice, price) {
   if (!oldPrice || oldPrice <= price) return null;
   return Math.round(((oldPrice - price) / oldPrice) * 100);
@@ -720,6 +776,11 @@ function addToCart(slug, quantity = 1) {
   cart[slug] = (cart[slug] || 0) + quantity;
   saveCart(cart);
   syncCartUI();
+  trackEvent("add_to_cart", {
+    currency: "COP",
+    value: product.price * quantity,
+    items: [gaItem(product, quantity)],
+  });
 
   const lang = currentLanguage();
   showToast(lang === "es" ? `${product.name} se agrego al carrito.` : `${product.name} was added to the cart.`);
@@ -811,6 +872,9 @@ function injectShell() {
             </a>
             <a class="nav-link ${page === "envios" ? "is-active" : ""}" href="${shippingHref}">
               ${bilingualText("Envios", "Shipping")}
+            </a>
+            <a class="nav-link ${page === "informe" ? "is-active" : ""}" href="${reportHref}">
+              ${bilingualText("Informe", "Report")}
             </a>
           </nav>
 
@@ -1097,9 +1161,11 @@ function syncCartUI() {
     if (entries.length === 0) {
       checkoutLink.href = fromRoot("pages/catalogo.html");
       checkoutLink.innerHTML = bilingualText("Ir al catalogo", "Go to catalog");
+      checkoutLink.removeAttribute("data-checkout-ready");
     } else {
       checkoutLink.href = cartWhatsappLink(entries, lang);
       checkoutLink.innerHTML = bilingualText("Pedir por WhatsApp", "Order on WhatsApp");
+      checkoutLink.setAttribute("data-checkout-ready", "true");
     }
   }
 }
@@ -1118,6 +1184,25 @@ function bindCart() {
     if (event.target.closest("[data-open-cart]")) {
       event.preventDefault();
       openCart();
+      return;
+    }
+
+    const checkoutLink = event.target.closest("[data-cart-checkout][data-checkout-ready='true']");
+    if (checkoutLink) {
+      trackCartCheckout(cartEntries());
+      return;
+    }
+
+    const singleOrderLink = event.target.closest("[data-single-checkout]");
+    if (singleOrderLink) {
+      const product = PRODUCT_MAP.get(singleOrderLink.dataset.slug);
+      if (product) {
+        trackEvent("begin_checkout", {
+          currency: "COP",
+          value: product.price,
+          items: [gaItem(product)],
+        });
+      }
       return;
     }
 
@@ -1489,7 +1574,7 @@ function renderProductPage() {
           <button class="btn btn-primary add-to-cart" type="button" data-slug="${product.slug}">
             ${bilingualText("Agregar al carrito", "Add to cart")}
           </button>
-          <a class="btn btn-secondary" href="${singleProductWhatsappLink(product, lang)}" target="_blank" rel="noreferrer">
+          <a class="btn btn-secondary" href="${singleProductWhatsappLink(product, lang)}" target="_blank" rel="noreferrer" data-single-checkout data-slug="${product.slug}">
             ${bilingualText("Pedir por WhatsApp", "Order on WhatsApp")}
           </a>
         </div>
@@ -1502,6 +1587,12 @@ function renderProductPage() {
       </article>
     </section>
   `;
+
+  trackEvent("view_item", {
+    currency: "COP",
+    value: product.price,
+    items: [gaItem(product)],
+  });
 
   specs.innerHTML = buildProductSpecs(product)
     .map(
@@ -1615,6 +1706,7 @@ function renderDynamicContent() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  initAnalytics();
   injectShell();
   renderDynamicContent();
   bindNavigation();

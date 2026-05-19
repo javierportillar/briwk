@@ -1,0 +1,11 @@
+{
+  "name": "savia-col-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "check": "node --check assets/js/main.js",
+    "serve": "python3 -m http.server 8000",
+    "firebase:deploy": "firebase deploy --only hosting --project briyithestrada-90ab7",
+    "firevase:deploy": "npm run firebase:deploy"
+  }
+}
